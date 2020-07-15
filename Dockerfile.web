@@ -1,0 +1,4 @@
+ARG BRANCH_TAG=latest
+FROM nimblehq/nimble_survey_web:${BRANCH_TAG}
+
+CMD ./bin/start.sh
