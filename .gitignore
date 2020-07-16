@@ -35,6 +35,7 @@
 # Ignore folder information and IDE-specific files
 .DS_Store
 .idea/*
+.vscode/*
 
 # Ignore the test coverage results from SimpleCov
 /coverage
