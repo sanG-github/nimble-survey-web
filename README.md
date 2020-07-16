@@ -39,7 +39,7 @@ Add the following build settings to run the tests in the Docker environment via 
 * Configure the environment variable `BRANCH_TAG` to tag Docker images per branch:
 
 ```sh
-export BRANCH_TAG=$SEMAPHORE_BRANCH_ID
+export BRANCH_TAG=$CI_BRANCH_ID
 ```
 
 Each branch needs to have its own Docker image to avoid build settings disparities and leverage Docker image caching.
@@ -75,10 +75,6 @@ docker push $DOCKER_IMAGE:$BRANCH_TAG
 ```sh
 docker-compose -f docker-compose.test.yml run test bin/bundle exec rake db:test:prepare
 ```
-
-#### Semaphore CI 2.0
-
-To setup the semaphore CI 2.0 for the project, please follow [this guideline](.semaphore/README.md)
 
 ### Test
 
