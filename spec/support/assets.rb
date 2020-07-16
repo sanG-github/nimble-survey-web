@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.before(:suite) do
     # On CI we use Docker and the assets are precompiled (in the Dockerfile) already
