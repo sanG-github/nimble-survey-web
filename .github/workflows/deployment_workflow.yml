@@ -1,0 +1,44 @@
+name: Deployment
+
+on: workflow_dispatch
+
+env:
+  DOCKER_HUB_USERNAME: ${{ github.repository_owner }}
+  DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  APP_NAME: nimble-survey-web
+  DOCKER_IMAGE: ${{ github.repository }}
+
+jobs:
+  export_branch_tag:
+    name: Export branch tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set outputs
+        id: export_branch_tag
+        run: |
+          export BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          echo "##[set-output name=branch_tag;]$(echo ${BRANCH_NAME/\//-})"
+    outputs:
+      branch_tag: ${{ steps.export_branch_tag.outputs.branch_tag }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [export_branch_tag]
+    env:
+      BRANCH_TAG: ${{ needs.export_branch_tag.outputs.branch_tag }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker login
+        run: echo "$DOCKER_HUB_TOKEN" | docker login --username=$DOCKER_HUB_USERNAME --password-stdin
+      - name: Docker build
+        run: |
+          bin/docker-prepare
+          docker-compose build
+          docker-compose push web
+      - name: Heroku login
+        run: heroku container:login
+      - name: Heroku release
+        run: |
+          heroku container:push --arg DOCKER_IMAGE=$DOCKER_IMAGE,BRANCH_TAG=$BRANCH_TAG --recursive
+          heroku container:release web worker
