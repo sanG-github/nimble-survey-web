@@ -100,4 +100,4 @@ RUN bundle exec rails i18n:js:export && \
 
 EXPOSE $PORT
 
-CMD ./bin/start.sh
+CMD ["./bin/start.sh"]
