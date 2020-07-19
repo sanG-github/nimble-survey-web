@@ -10,25 +10,11 @@ env:
   DOCKER_IMAGE: ${{ github.repository }}
 
 jobs:
-  export_branch_tag:
-    name: Export branch tag
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set outputs
-        id: export_branch_tag
-        run: |
-          export BRANCH_NAME="${GITHUB_REF#refs/heads/}"
-          echo "##[set-output name=branch_tag;]$(echo ${BRANCH_NAME/\//-})"
-    outputs:
-      branch_tag: ${{ steps.export_branch_tag.outputs.branch_tag }}
-
   deploy:
     runs-on: ubuntu-latest
-    needs: [export_branch_tag]
-    env:
-      BRANCH_TAG: ${{ needs.export_branch_tag.outputs.branch_tag }}
     steps:
       - uses: actions/checkout@v2
+      - uses: ./.github/actions/branch-tag
       - name: Docker login
         run: echo "$DOCKER_HUB_TOKEN" | docker login --username=$DOCKER_HUB_USERNAME --password-stdin
       - name: Docker build
