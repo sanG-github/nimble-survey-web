@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::V1::ApplicationController do
+RSpec.describe API::V1::ApplicationController do
   controller do
     def index
       render json: { success: true }
