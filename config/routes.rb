@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       devise_scope :user do
         resources :passwords, only: :create
       end
+
+      resources :surveys, only: :index
     end
   end
 end
