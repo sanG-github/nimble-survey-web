@@ -6,9 +6,9 @@ module API
       include Pagy::Backend
 
       def index
-        _pagy, items = pagy_array(Survey.all, pagination_params)
+        pagy, surveys = pagy_array(Survey.all, pagination_params)
 
-        render json: items
+        render json: SurveySerializer.new(surveys, meta: meta_from_pagy(pagy))
       end
 
       private
@@ -17,6 +17,15 @@ module API
         {
           page: params[:page],
           items: params[:items]
+        }
+      end
+
+      def meta_from_pagy(pagy)
+        {
+          page: pagy.page,
+          pages: pagy.pages,
+          items: pagy.items,
+          count: pagy.count
         }
       end
     end
