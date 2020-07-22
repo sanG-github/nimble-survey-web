@@ -1,12 +1,12 @@
-name: Deployment
+name: Staging Deployment
 
 on: workflow_dispatch
 
 env:
   DOCKER_HUB_USERNAME: ${{ github.repository_owner }}
   DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
-  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-  APP_NAME: nimble-survey-web
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_STAGING }}
+  HEROKU_APP: nimble-survey-web-staging
   DOCKER_IMAGE: ${{ github.repository }}
 
 jobs:

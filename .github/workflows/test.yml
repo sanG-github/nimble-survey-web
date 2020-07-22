@@ -73,10 +73,18 @@ jobs:
     name: Invoke deployment
     runs-on: ubuntu-latest
     needs: [unit_test, system_test]
-    if: contains(github.ref, 'refs/heads/development')
+    if: contains(github.ref, 'refs/heads/development') || contains(github.ref, 'refs/heads/master')
     steps:
-      - name: Invoke deployment workflow
+      - name: Invoke staging deployment workflow
         uses: benc-uk/workflow-dispatch@v1
+        if: contains(github.ref, 'refs/heads/development')
         with:
-          workflow: Deployment
+          workflow: Staging Deployment
+          token: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Invoke production deployment workflow
+        uses: benc-uk/workflow-dispatch@v1
+        if: contains(github.ref, 'refs/heads/master')
+        with:
+          workflow: Production Deployment
           token: ${{ secrets.PERSONAL_TOKEN }}
