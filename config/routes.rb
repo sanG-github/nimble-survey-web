@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       devise_scope :user do
-        post 'forgot_password', to: 'passwords#create'
+        resources :passwords, only: :create
       end
     end
   end
