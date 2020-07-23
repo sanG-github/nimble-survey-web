@@ -34,12 +34,12 @@ class Survey < ApplicationModel
       end
     end
 
-    def where(options = {})
-      all.select { |survey| survey.attributes >= options }
+    def where(attributes = {})
+      all.select { |survey| survey.attributes >= attributes }
     end
 
-    def find_by(options = {})
-      all.find { |survey| survey.attributes >= options }
+    def find_by(attributes = {})
+      all.find { |survey| survey.attributes >= attributes }
     end
   end
 end

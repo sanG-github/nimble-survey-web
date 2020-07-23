@@ -15,18 +15,18 @@ RSpec.describe API::V1::ApplicationController do
 
   describe 'GET#index' do
     context 'given an authenticated request', auth: :user_token do
-      it 'returns 200 status' do
+      it 'returns success status' do
         get :index
 
-        expect(response.status).to eq(200)
+        expect(response).to have_http_status(:success)
       end
     end
 
     context 'given an unauthenticated request' do
-      it 'returns 401 status' do
+      it 'returns unauthorized status' do
         get :index
 
-        expect(response.status).to eq(401)
+        expect(response).to have_http_status(:unauthorized)
       end
     end
   end

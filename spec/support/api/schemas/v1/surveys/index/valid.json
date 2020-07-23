@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "thank_email_above_threshold": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "thank_email_below_threshold": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "is_active": {
+                "type": "boolean"
+              },
+              "cover_image_url": {
+                "type": "string"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "active_at": {
+                "type": "string"
+              },
+              "inactive_at": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "survey_type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "description",
+              "thank_email_above_threshold",
+              "thank_email_below_threshold",
+              "is_active",
+              "cover_image_url",
+              "created_at",
+              "active_at",
+              "inactive_at",
+              "survey_type"
+            ]
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "questions": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "type"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            },
+            "required": [
+              "questions"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "attributes",
+          "relationships"
+        ]
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer"
+        },
+        "pages": {
+          "type": "integer"
+        },
+        "items": {
+          "type": "integer"
+        },
+        "count": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "page",
+        "pages",
+        "items",
+        "count"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "meta"
+  ]
+}
