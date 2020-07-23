@@ -22,29 +22,39 @@ RSpec.describe API::V1::SurveysController do
         get :index
 
         response_body = JSON.parse(response.body, symbolize_names: true)
-        expect(response_body[:meta]).to eq(page: 1, pages: 4, items: 5, count: 20)
+        expect(response_body[:meta]).to eq(page: 1, pages: 4, page_size: 5, records: 20)
       end
     end
 
     context 'given a request with pagination params' do
-      it 'returns success status' do
-        get :index, params: { page: 2, items: 2 }
+      context 'given a valid page number' do
+        it 'returns success status' do
+          get :index, params: { page: { number: 2, size: 2 } }
 
-        expect(response).to have_http_status(:success)
+          expect(response).to have_http_status(:success)
+        end
+
+        it 'matches json schema' do
+          get :index, params: { page: { number: 2, size: 2 } }
+
+          response_body = JSON.parse(response.body)
+          expect(response_body).to match_json_schema('v1/surveys/index/valid')
+        end
+
+        it 'returns the correct meta data' do
+          get :index, params: { page: { number: 2, size: 2 } }
+
+          response_body = JSON.parse(response.body, symbolize_names: true)
+          expect(response_body[:meta]).to eq(page: 2, pages: 10, page_size: 2, records: 20)
+        end
       end
 
-      it 'matches json schema' do
-        get :index, params: { page: 2, items: 2 }
+      context 'given an invalid page number' do
+        it 'returns not_found status' do
+          get :index, params: { page: { number: 100, size: 2 } }
 
-        response_body = JSON.parse(response.body)
-        expect(response_body).to match_json_schema('v1/surveys/index/valid')
-      end
-
-      it 'returns the correct meta data' do
-        get :index, params: { page: 2, items: 2 }
-
-        response_body = JSON.parse(response.body, symbolize_names: true)
-        expect(response_body[:meta]).to eq(page: 2, pages: 10, items: 2, count: 20)
+          expect(response).to have_http_status(:not_found)
+        end
       end
     end
   end

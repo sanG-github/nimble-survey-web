@@ -121,18 +121,18 @@
         "pages": {
           "type": "integer"
         },
-        "items": {
+        "page_size": {
           "type": "integer"
         },
-        "count": {
+        "records": {
           "type": "integer"
         }
       },
       "required": [
         "page",
         "pages",
-        "items",
-        "count"
+        "page_size",
+        "records"
       ]
     }
   },
