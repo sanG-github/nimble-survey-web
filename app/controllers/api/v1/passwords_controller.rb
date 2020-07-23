@@ -7,14 +7,8 @@ module API
 
       protected
 
-      def respond_with(*resource)
-        user = resource.first
-
-        if user.blank?
-          render json: {}, status: :created
-        else
-          render json: { error: user.errors.full_messages.to_sentence }, status: :not_found
-        end
+      def respond_with(*)
+        render json: { message: t('devise.passwords.send_paranoid_instructions') }
       end
     end
   end
