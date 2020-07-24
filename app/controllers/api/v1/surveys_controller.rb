@@ -13,6 +13,16 @@ module API
         render status: :not_found
       end
 
+      def show
+        survey = Survey.find_by(id: params[:id])
+
+        if survey
+          render json: survey, include: %i[questions questions.answers]
+        else
+          render status: :not_found
+        end
+      end
+
       private
 
       def pagination_params

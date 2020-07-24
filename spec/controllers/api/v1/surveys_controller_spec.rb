@@ -58,4 +58,36 @@ RSpec.describe API::V1::SurveysController do
       end
     end
   end
+
+  describe 'GET#show', auth: :user_token do
+    context 'given a valid survey ID' do
+      it 'returns success status' do
+        get :show, params: { id: 'd5de6a8f8f5f1cfe51bc' }
+
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'matches json schema' do
+        get :show, params: { id: 'd5de6a8f8f5f1cfe51bc' }
+
+        response_body = JSON.parse(response.body)
+        expect(response_body).to match_json_schema('v1/surveys/show/valid')
+      end
+
+      it 'returns the correct survey' do
+        get :show, params: { id: 'd5de6a8f8f5f1cfe51bc' }
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        expect(response_body[:data][:id]).to eq('d5de6a8f8f5f1cfe51bc')
+      end
+    end
+
+    context 'given an invalid survey ID' do
+      it 'returns not_found status' do
+        get :show, params: { id: 'invalid' }
+
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+  end
 end
