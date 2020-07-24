@@ -1,6 +1,9 @@
 name: Production Deployment
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - master
 
 env:
   DOCKER_HUB_USERNAME: ${{ github.repository_owner }}

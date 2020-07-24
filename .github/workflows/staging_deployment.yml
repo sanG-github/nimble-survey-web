@@ -1,6 +1,9 @@
 name: Staging Deployment
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - development
 
 env:
   DOCKER_HUB_USERNAME: ${{ github.repository_owner }}
