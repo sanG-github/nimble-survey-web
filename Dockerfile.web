@@ -1,4 +1,5 @@
+ARG DOCKER_IMAGE=nimblehq/nimble-survey-web
 ARG BRANCH_TAG=latest
-FROM nimblehq/nimble_survey_web:${BRANCH_TAG}
+FROM ${DOCKER_IMAGE}:${BRANCH_TAG}
 
 CMD ["./bin/start.sh"]
