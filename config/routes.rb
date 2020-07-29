@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       end
 
       resources :surveys, only: %i[index show]
+      resource :users, only: :show, path: :me
     end
   end
 end
