@@ -18,7 +18,7 @@ Rails.application.routes.draw do
         resources :passwords, only: :create
       end
 
-      resources :surveys, only: :index
+      resources :surveys, only: %i[index show]
     end
   end
 end

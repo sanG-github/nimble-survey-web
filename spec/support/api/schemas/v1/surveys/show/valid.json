@@ -1,0 +1,297 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "thank_email_above_threshold": {
+              "type": "string"
+            },
+            "thank_email_below_threshold": {
+              "type": "string"
+            },
+            "is_active": {
+              "type": "boolean"
+            },
+            "cover_image_url": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "active_at": {
+              "type": "string"
+            },
+            "inactive_at": {
+              "type": "null"
+            },
+            "survey_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "description",
+            "thank_email_above_threshold",
+            "thank_email_below_threshold",
+            "is_active",
+            "cover_image_url",
+            "created_at",
+            "active_at",
+            "inactive_at",
+            "survey_type"
+          ]
+        },
+        "relationships": {
+          "type": "object",
+          "properties": {
+            "questions": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "type"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "data"
+              ]
+            }
+          },
+          "required": [
+            "questions"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "attributes",
+        "relationships"
+      ]
+    },
+    "included": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "help_text": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "display_order": {
+                "type": "integer"
+              },
+              "short_text": {
+                "type": "string"
+              },
+              "pick": {
+                "type": "string"
+              },
+              "display_type": {
+                "type": "string"
+              },
+              "is_mandatory": {
+                "type": "boolean"
+              },
+              "correct_answer_id": {
+                "type": "null"
+              },
+              "facebook_profile": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "twitter_profile": {
+                "type": "null"
+              },
+              "image_url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "cover_image_url": {
+                "type": "string"
+              },
+              "cover_image_opacity": {
+                "type": "number"
+              },
+              "cover_background_color": {
+                "type": "null"
+              },
+              "is_shareable_on_facebook": {
+                "type": "boolean"
+              },
+              "is_shareable_on_twitter": {
+                "type": "boolean"
+              },
+              "font_face": {
+                "type": "null"
+              },
+              "font_size": {
+                "type": "null"
+              },
+              "tag_list": {
+                "type": "string"
+              },
+              "input_mask_placeholder": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "is_customer_first_name": {
+                "type": "boolean"
+              },
+              "is_customer_last_name": {
+                "type": "boolean"
+              },
+              "is_customer_title": {
+                "type": "boolean"
+              },
+              "is_customer_email": {
+                "type": "boolean"
+              },
+              "prompt_custom_answer": {
+                "type": "boolean"
+              },
+              "weight": {
+                "type": "null"
+              },
+              "input_mask": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "date_constraint": {
+                "type": "null"
+              },
+              "default_value": {
+                "type": "null"
+              },
+              "response_class": {
+                "type": "string"
+              },
+              "reference_identifier": {
+                "type": "null"
+              },
+              "score": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "alerts": {
+                "type": "array",
+                "items": {
+                  "items": {}
+                }
+              }
+            },
+            "required": [
+              "text",
+              "help_text",
+              "display_order",
+              "short_text",
+              "display_type",
+              "is_mandatory"
+            ]
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "answers": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "type"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              }
+            },
+            "required": [
+              "answers"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ]
+      }
+    }
+  },
+  "required": [
+    "data",
+    "included"
+  ]
+}
