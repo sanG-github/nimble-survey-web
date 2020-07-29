@@ -11,4 +11,12 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      devise_scope :user do
+        resources :passwords, only: :create
+      end
+    end
+  end
 end
