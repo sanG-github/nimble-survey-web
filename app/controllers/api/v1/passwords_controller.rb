@@ -8,7 +8,9 @@ module API
       protected
 
       def respond_with(*)
-        render json: { message: t('devise.passwords.send_paranoid_instructions') }
+        render json: {
+          meta: { message: t('devise.passwords.send_paranoid_instructions') }
+        }
       end
     end
   end
