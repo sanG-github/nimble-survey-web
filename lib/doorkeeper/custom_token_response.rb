@@ -6,7 +6,7 @@ module Doorkeeper
       {
         data: {
           id: @token.id,
-          type: :token,
+          type: 'token',
           attributes: super
         }
       }
