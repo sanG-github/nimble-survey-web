@@ -1,15 +1,15 @@
-name: Deploy Production
+name: Deploy
 
 on:
   push:
     branches:
       - master
+      - development
 
 env:
   DOCKER_HUB_USERNAME: ${{ github.repository_owner }}
   DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
-  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_PRODUCTION }}
-  HEROKU_APP: nimble-survey-web
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   DOCKER_IMAGE: ${{ github.repository }}
 
 jobs:
@@ -19,6 +19,15 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: ./.github/actions/branch-tag
+
+      - name: Set HEROKU_APP
+        run: |
+          if [[ $BRANCH_TAG = "master" ]]
+          then
+            echo "::set-env name=HEROKU_APP::nimble-survey-web"
+          else
+            echo "::set-env name=HEROKU_APP::nimble-survey-web-staging"
+          fi
 
       - name: Docker login
         run: echo "$DOCKER_HUB_TOKEN" | docker login --username=$DOCKER_HUB_USERNAME --password-stdin
