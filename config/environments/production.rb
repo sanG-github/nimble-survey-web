@@ -64,9 +64,20 @@ Rails.application.configure do
 
   config.action_mailer.asset_host = ENV.fetch('MAILER_DEFAULT_HOST')
 
-  config.action_mailer.default_url_options = { 
-    host: ENV.fetch('MAILER_DEFAULT_HOST'), 
+  config.action_mailer.default_url_options = {
+    host: ENV.fetch('MAILER_DEFAULT_HOST'),
     port: ENV.fetch('MAILER_DEFAULT_PORT')
+  }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    port: ENV.fetch('MAILGUN_SMTP_PORT'),
+    address: ENV.fetch('MAILGUN_SMTP_SERVER'),
+    user_name: ENV.fetch('MAILGUN_SMTP_LOGIN'),
+    password: ENV.fetch('MAILGUN_SMTP_PASSWORD'),
+    domain: ENV.fetch('APP_DOMAIN'),
+    authentication: :plain,
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
