@@ -22,7 +22,12 @@ RSpec.describe API::V1::PasswordsController, type: :controller do
 
         post :create, params: { user: { email: 'hoang@example.com' } }
 
-        expect(JSON.parse(response.body, symbolize_names: true)).to eq(message: I18n.t('devise.passwords.send_paranoid_instructions'))
+        expected_response = {
+          meta: {
+            message: I18n.t('devise.passwords.send_paranoid_instructions')
+          }
+        }
+        expect(JSON.parse(response.body, symbolize_names: true)).to eq(expected_response)
       end
     end
 
@@ -37,7 +42,12 @@ RSpec.describe API::V1::PasswordsController, type: :controller do
         it 'has a message' do
           post :create
 
-          expect(JSON.parse(response.body, symbolize_names: true)).to eq(message: I18n.t('devise.passwords.send_paranoid_instructions'))
+          expected_response = {
+            meta: {
+              message: I18n.t('devise.passwords.send_paranoid_instructions')
+            }
+          }
+          expect(JSON.parse(response.body, symbolize_names: true)).to eq(expected_response)
         end
       end
 
@@ -51,7 +61,12 @@ RSpec.describe API::V1::PasswordsController, type: :controller do
         it 'has a message' do
           post :create, params: { user: { email: 'hoang@example.com' } }
 
-          expect(JSON.parse(response.body, symbolize_names: true)).to eq(message: I18n.t('devise.passwords.send_paranoid_instructions'))
+          expected_response = {
+            meta: {
+              message: I18n.t('devise.passwords.send_paranoid_instructions')
+            }
+          }
+          expect(JSON.parse(response.body, symbolize_names: true)).to eq(expected_response)
         end
       end
     end
