@@ -9,6 +9,11 @@ ARG ASSET_HOST=http://localhost
 ARG MAILER_DEFAULT_HOST=http://localhost
 ARG MAILER_DEFAULT_PORT=3000
 ARG SECRET_KEY_BASE=secret_key_base
+ARG MAILGUN_SMTP_PORT=mailgun_smtp_port
+ARG MAILGUN_SMTP_SERVER=mailgun_smtp_server
+ARG MAILGUN_SMTP_LOGIN=mailgun_smtp_login
+ARG MAILGUN_SMTP_PASSWORD=mailgun_smtp_password
+ARG APP_DOMAIN=app_domain
 
 # Define all the envs here
 ENV BUILD_ENV=$BUILD_ENV \
