@@ -24,6 +24,9 @@ gem 'doorkeeper' # An OAuth 2 provider for Ruby on Rails
 gem 'webpacker', '4.0' # Transpile app-like JavaScript
 gem 'sass-rails' # SASS
 
+# Templating
+gem 'slim' # light weight template engine
+
 # Translations
 # gem 'rails-i18n', '~> 6.0.0' # Translations for Rails
 # gem 'devise-i18n' # Translations for Devise
