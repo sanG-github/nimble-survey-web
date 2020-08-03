@@ -4,7 +4,7 @@ module API
   module V1
     class ResponsesController < ApplicationController
       def create
-        response_form = ResponseForm.new(create_params)
+        response_form = ResponseForm.new(create_params.to_h)
 
         if response_form.save
           render status: :created
@@ -18,9 +18,7 @@ module API
       def create_params
         params
           .require(:response)
-          .permit(questions: [:id, { answers: %i[id answer] }])
-          .to_h
-          .merge(survey_id: params[:survey_id])
+          .permit(:survey_id, questions: [:id, { answers: %i[id answer] }])
       end
     end
   end

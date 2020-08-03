@@ -18,10 +18,8 @@ Rails.application.routes.draw do
         resources :passwords, only: :create
       end
 
-      resources :surveys, only: %i[index show] do
-        resources :responses, only: :create
-      end
-
+      resources :responses, only: :create
+      resources :surveys, only: %i[index show]
       resource :users, only: :show, path: :me
     end
   end
