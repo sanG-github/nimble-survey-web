@@ -9,9 +9,14 @@
 // Mixins
 
 // Base
+@import 'tailwindcss/base';
 
 // Layouts
 
 // Components
+@import 'tailwindcss/components';
+
+// Utilities
+@import 'tailwindcss/utilities';
 
 // Screens
