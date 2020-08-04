@@ -22,7 +22,7 @@ github.dismiss_out_of_range_messages
 rubocop.lint inline_comment: true
 
 # Runs eslint on modified and added files in the PR
-eslint.lint
+# eslint.lint
 
 # Runs Reek on modified and added files in the PR
 reek.lint
