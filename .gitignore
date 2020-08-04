@@ -40,9 +40,6 @@
 # Ignore the test coverage results from SimpleCov
 /coverage
 
-# Ignore pronto configuration files
-.pronto.yml
-
 /public/packs
 /public/packs-test
 /node_modules
