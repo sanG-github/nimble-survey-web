@@ -50,6 +50,17 @@ group :development, :test do
   gem 'brakeman', require: false # A static analysis security vulnerability scanner for Ruby on Rails applications
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+
+  gem 'danger' # Automated code review.
+  gem 'danger-brakeman_scanner' # Security static analysis scanner in danger
+  gem 'danger-eslint' # Lint JavaScript code
+  gem 'danger-lgtm' # Make danger say LGTM
+  gem 'danger-rails_best_practices' # Analyze code regarding best practices
+  gem 'danger-reek' # Detect code smell
+  gem 'danger-rubocop' # A Danger plugin for Rubocop
+  gem 'danger-simplecov_json' # Report code coverage in danger
+  gem 'danger-slim_lint' # Lint slim files
+  gem 'danger-suggester' # Suggest code changes based on configured code
 end
 
 group :test do
