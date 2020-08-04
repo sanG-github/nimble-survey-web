@@ -59,7 +59,6 @@ group :development, :test do
   gem 'danger-rails_best_practices' # Analyze code regarding best practices
   gem 'danger-reek' # Detect code smell
   gem 'danger-rubocop' # A Danger plugin for Rubocop
-  gem 'danger-simplecov_json' # Report code coverage in danger
   gem 'danger-slim_lint' # Lint slim files
   gem 'danger-suggester' # Suggest code changes based on configured code
 end

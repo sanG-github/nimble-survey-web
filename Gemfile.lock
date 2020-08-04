@@ -141,8 +141,6 @@ GEM
     danger-rubocop (0.8.0)
       danger
       rubocop
-    danger-simplecov_json (0.3.0)
-      danger-plugin-api (~> 1.0)
     danger-slim_lint (0.1.2)
       danger-plugin-api (~> 1.0)
       slim_lint (~> 0.11)
@@ -464,7 +462,6 @@ DEPENDENCIES
   danger-rails_best_practices
   danger-reek
   danger-rubocop
-  danger-simplecov_json
   danger-slim_lint
   danger-suggester
   database_cleaner
