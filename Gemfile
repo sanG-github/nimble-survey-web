@@ -23,6 +23,7 @@ gem 'doorkeeper' # An OAuth 2 provider for Ruby on Rails
 # Assets
 gem 'webpacker', '4.0' # Transpile app-like JavaScript
 gem 'sass-rails' # SASS
+gem 'inline_svg' # Use Inline SVG for styling SVG with CSS
 
 # Templating
 gem 'slim' # light weight template engine
@@ -40,6 +41,7 @@ group :development do
   gem 'spring' # Spring speeds up development by keeping your application running in the background.
   gem 'spring-commands-rspec' # This gem implements the rspec command for Spring.
   gem 'spring-watcher-listen', '2.0.1' # Makes Spring watch the filesystem for changes using Listen
+  gem 'svgeez' # Gem for generating an SVG sprite from a folder of SVG icons.
 end
 
 group :development, :test do

@@ -1,0 +1,20 @@
+doctype html
+html.layout-devise lang=I18n.locale
+  head
+    title
+      = page_title
+    == csrf_meta_tags
+    == csp_meta_tag
+
+    == stylesheet_link_tag 'application', media: 'all'
+
+  body.h-screen.bg-gray-900.bg-image
+    main.h-full.w-full.grid.place-center.main-overlay
+      .max-w-xs.md:max-w-md.w-full.m-auto
+        .h-10 = svg_tag(icon_id: 'icon-logo-white', html: { class: 'w-full h-full' })
+        - if content_for?(:description)
+          .h-6.mt-6.text-center.text-description = content_for(:description)
+        == yield
+
+    = inline_svg_tag 'icon-sprite.svg'
+    == javascript_pack_tag 'application'
