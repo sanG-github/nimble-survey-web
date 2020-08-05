@@ -23,6 +23,3 @@ slim_lint.lint
 
 # Suggests code changes in the PR
 suggester.suggest
-
-# Posts a random lgtm picture from lgtm.app
-lgtm.check_lgtm

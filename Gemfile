@@ -55,7 +55,6 @@ group :development, :test do
   gem 'danger' # Automated code review.
   gem 'danger-brakeman_scanner' # Security static analysis scanner in danger
   gem 'danger-eslint' # Lint JavaScript code
-  gem 'danger-lgtm' # Make danger say LGTM
   gem 'danger-rails_best_practices' # Analyze code regarding best practices
   gem 'danger-reek' # Detect code smell
   gem 'danger-rubocop' # A Danger plugin for Rubocop
