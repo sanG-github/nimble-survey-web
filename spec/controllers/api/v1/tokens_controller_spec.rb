@@ -57,5 +57,19 @@ RSpec.describe API::V1::TokensController, type: :controller do
         expect(JSON.parse(response.body)).to be_empty
       end
     end
+
+    context 'given no token param' do
+      it 'returns success status' do
+        post :revoke
+
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'returns an empty response' do
+        post :revoke
+
+        expect(JSON.parse(response.body)).to be_empty
+      end
+    end
   end
 end
