@@ -1,0 +1,16 @@
+.layout-devise {
+  .bg-image {
+    background: {
+      image: url('/assets/background.png');
+      repeat: no-repeat;
+      position: center;
+      size: cover;
+    }
+  }
+
+  .main-overlay {
+    background: linear-gradient(180deg, var(--color-white-200) 0%, var(--color-black) 100%);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(40px);
+  }
+}
