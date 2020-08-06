@@ -92,12 +92,6 @@ docker-compose -f docker-compose.test.yml run test bin/bundle exec spec [rspec-p
 
 ### Automated Code Review Setup
 
-* Make sure that the config file `pronto.yml` for pronto has been added as a configuration file.
+* Add a bot to this repository or to the organization. The bot requires permission level “Write” to be able to set a PR’s status
 
-* In the CI build script, add the following command:
-
-```sh
-if ([ $BRANCH_NAME != 'master' ] && [ $BRANCH_NAME != 'development' ]); then \
-  (echo "Running pronto"; bundle exec pronto run -f bitbucket_pr -c origin/development);  else \ (echo "Escaping pronto"); \
-fi
-```
+* Create a token from bot account with `public_repo` scope, and use it to create a `DANGER_GITHUB_API_TOKEN` secret on this repository
