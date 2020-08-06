@@ -5,7 +5,8 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  build:
+  run:
+    name: Run Danger
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -61,7 +62,7 @@ jobs:
         steps.yarn-cache.outputs.cache-hit != 'true' ||
         steps.node-modules-cache.outputs.cache-hit != 'true'
 
-    - name: Run danger
+    - name: Run Danger
       run: bundle exec danger
       env:
         DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
