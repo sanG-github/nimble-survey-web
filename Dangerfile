@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# Warns when there is a big PR
-warn('Big PR') if git.lines_of_code > 500
-
 # Runs rails_best_practices on modified and added files in the PR
 rails_best_practices.lint
 
