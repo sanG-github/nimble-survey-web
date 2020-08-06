@@ -40,7 +40,7 @@ RSpec.describe API::V1::ResponsesController, type: :controller do
       end
     end
 
-    context 'given an empty questions' do
+    context 'given no questions' do
       it 'returns unprocessable_entity status' do
         post :create, params: { survey_id: 'd5de6a8f8f5f1cfe51bc', questions: [] }
 
@@ -55,7 +55,7 @@ RSpec.describe API::V1::ResponsesController, type: :controller do
       end
     end
 
-    context 'given questions that has invalid question IDs' do
+    context 'given questions with invalid question IDs' do
       it 'returns unprocessable_entity status' do
         questions_ids = [
           { id: 'invalid' }
