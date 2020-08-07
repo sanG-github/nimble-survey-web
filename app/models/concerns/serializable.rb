@@ -4,6 +4,7 @@ module Serializable
   extend ActiveSupport::Concern
 
   included do
+    # :reek:NilCheck
     def as_json(options = {})
       serializer = options[:serializer].to_s.safe_constantize || ApplicationSerializer.for(self.class.name)
       return super(options) if serializer.nil?

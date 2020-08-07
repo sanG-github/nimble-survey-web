@@ -12,6 +12,7 @@ module API
       end
 
       # Render Error Message in json_api format
+      # :reek:LongParameterList { max_params: 5 }
       def render_error(detail:, source: nil, meta: nil, status: :unprocessable_entity, code: nil)
         errors = [
           {

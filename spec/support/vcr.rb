@@ -39,6 +39,7 @@ RSpec.configure do |config|
     end
   end
 
+  # :reek:FeatureEnvy
   def configure_vcr_with_options(example, vcr_options)
     cassette_options = vcr_options[:options] || {}
     vcr_cassettes = vcr_options[:cassettes] || Array(vcr_options[:cassette])
