@@ -10,12 +10,14 @@
 
 // Base
 @import 'tailwindcss/base';
+@import 'base/fonts';
 
 // Layouts
 @import 'layouts/devise';
 
 // Components
 @import 'tailwindcss/components';
+@import 'components/form.pcss';
 
 // Utilities
 @import 'tailwindcss/utilities';
