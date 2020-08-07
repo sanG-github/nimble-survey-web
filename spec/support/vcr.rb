@@ -45,7 +45,7 @@ RSpec.configure do |config|
     vcr_cassettes = vcr_options[:cassettes] || Array(vcr_options[:cassette])
     cassette_group = vcr_options[:group]
     vcr_cassettes.map! { |cassette| "#{cassette_group}/#{cassette}" } if cassette_group.present?
-    vcr_cassettes.each { |c| puts c }
+    vcr_cassettes.each { |cassette| puts cassette }
     vcr_cassettes.each { |cassette| VCR.use_cassette(cassette, cassette_options, &example) }
   end
 end
