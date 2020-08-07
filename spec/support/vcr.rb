@@ -39,12 +39,13 @@ RSpec.configure do |config|
     end
   end
 
+  # :reek:FeatureEnvy
   def configure_vcr_with_options(example, vcr_options)
     cassette_options = vcr_options[:options] || {}
     vcr_cassettes = vcr_options[:cassettes] || Array(vcr_options[:cassette])
     cassette_group = vcr_options[:group]
     vcr_cassettes.map! { |cassette| "#{cassette_group}/#{cassette}" } if cassette_group.present?
-    vcr_cassettes.each { |c| puts c }
+    vcr_cassettes.each { |cassette| puts cassette }
     vcr_cassettes.each { |cassette| VCR.use_cassette(cassette, cassette_options, &example) }
   end
 end
