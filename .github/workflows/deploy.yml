@@ -1,0 +1,47 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+      - development
+
+env:
+  DOCKER_HUB_USERNAME: ${{ github.repository_owner }}
+  DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  DOCKER_IMAGE: ${{ github.repository }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./.github/actions/branch-tag
+
+      - name: Set HEROKU_APP
+        run: |
+          if [[ $BRANCH_TAG = "master" ]]
+          then
+            echo "::set-env name=HEROKU_APP::nimble-survey-web"
+          else
+            echo "::set-env name=HEROKU_APP::nimble-survey-web-staging"
+          fi
+
+      - name: Docker login
+        run: echo "$DOCKER_HUB_TOKEN" | docker login --username=$DOCKER_HUB_USERNAME --password-stdin
+
+      - name: Docker build
+        run: |
+          bin/docker-prepare
+          docker-compose build
+          docker-compose push web
+
+      - name: Heroku login
+        run: heroku container:login
+
+      - name: Heroku release
+        run: |
+          heroku container:push --arg DOCKER_IMAGE=$DOCKER_IMAGE,BRANCH_TAG=$BRANCH_TAG --recursive
+          heroku container:release web worker
