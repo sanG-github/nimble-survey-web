@@ -8,7 +8,6 @@ require('@rails/activestorage').start();
 require('channels');
 
 import 'translations/translations';
-import '../stylesheets/application.scss';
 
 import 'initializers/';
 import 'screens/';

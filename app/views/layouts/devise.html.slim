@@ -11,7 +11,7 @@ html.layout-devise lang=I18n.locale
 
   body.h-screen.bg-gray-900.bg-image
     main.h-full.w-full.grid.place-center.main-overlay
-      .max-w-xs.md:max-w-md.w-full.m-auto
+      .w-full.max-w-xs.md:max-w-xs
         .h-10 = svg_tag(icon_id: 'icon-logo-white', html: { class: 'w-full h-full' })
         - if content_for?(:description)
           .h-6.mt-6.text-center.text-description = content_for(:description)

@@ -9,7 +9,7 @@
   }
 
   .main-overlay {
-    background: linear-gradient(180deg, var(--color-white-lightest) -50%, var(--color-black) 100%);
+    background: linear-gradient(180deg, var(--color-white-200) -50%, var(--color-original-black) 100%);
     mix-blend-mode: normal;
     backdrop-filter: blur(40px);
   }

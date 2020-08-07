@@ -1,16 +1,55 @@
-
 .btn {
-  @apply h-14 bg-white text-black text-center text-base font-extrabold tracking-normal rounded-lg cursor-pointer;
+  @apply h-14 text-center text-base font-extrabold tracking-normal rounded-normal cursor-pointer outline-none;
 
   &:active {
     @apply bg-white-600;
   }
+
+  &-primary {
+    @apply bg-white text-black;
+  }
+
+  &-secondary {
+    @apply bg-white-180 text-white;
+  }
+
+  &-danger {
+    @apply bg-red-500 text-white;
+  }
+
+  &-sm {
+    @apply h-10 text-sm tracking-wide rounded-lg;
+  }
+
+  &-full {
+    @apply w-full;
+  }
 }
 
-.form-input {
-  @apply h-14 px-3 text-base font-normal tracking-normal rounded-lg bg-white-180 outline-none border border-transparent cursor-text;
+.form-group,
+.actions {
+  @apply mt-6;
+}
+
+.form-group {
+  label {
+    @apply h-5 text-label;
+  }
+}
+
+.form-control {
+  @apply h-14 mt-2 px-3 text-primary rounded-normal bg-white-180
+         outline-none border border-transparent cursor-text;
 
   caret-color: theme('colors.white.default');
+
+  &-full {
+    @apply w-full;
+  }
+
+  &-link {
+    @apply absolute right-0 mt-2 p-3 text-secondary text-sm;
+  }
 
   &:active,
   &:focus,
