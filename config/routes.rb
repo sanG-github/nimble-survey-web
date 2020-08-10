@@ -4,11 +4,14 @@ Rails.application.routes.draw do
     root to: "devise/registrations#edit"
   end
 
+  use_doorkeeper do
+    skip_controllers :tokens, :authorizations, :token_info, :authorized_applications
+  end
+
   scope :api do
     scope :v1 do
       use_doorkeeper do
-        controllers tokens: 'api/v1/tokens'
-        skip_controllers :applications, :authorizations, :token_info
+        skip_controllers :applications, :authorizations, :token_info, :authorized_applications
       end
     end
   end
