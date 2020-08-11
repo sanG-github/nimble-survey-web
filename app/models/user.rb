@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :access_tokens,
            class_name: 'Doorkeeper::AccessToken',
            foreign_key: :resource_owner_id,
-           inverse_of: :user,
-           dependent: :destroy
+           inverse_of: :resource_owner,
+           dependent: :delete_all
 end
