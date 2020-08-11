@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   scope :api do
     scope :v1 do
       use_doorkeeper do
+        controllers tokens: 'api/v1/tokens'
+
         skip_controllers :applications, :authorizations, :token_info, :authorized_applications
       end
     end

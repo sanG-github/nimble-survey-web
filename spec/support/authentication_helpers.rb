@@ -11,9 +11,7 @@ RSpec.configure do |config|
     request.headers['Content-Type'] = 'application/json'
   end
 
-  def oauth_application_params
-    application = Fabricate(:application)
-
+  def oauth_application_params(application = Fabricate(:application))
     {
       client_id: application.uid,
       client_secret: application.secret

@@ -167,7 +167,7 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
         expect(response).to have_http_status(:forbidden)
       end
 
-      it 'returns an empty response body' do
+      it 'returns an error message' do
         post :create, params: { email: 'hoang@example.com', password: '123456' }
 
         expected_response = {
