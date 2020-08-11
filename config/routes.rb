@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       devise_scope :user do
         resources :passwords, only: :create
+        resources :registrations, only: :create
       end
 
       resources :responses, only: :create
