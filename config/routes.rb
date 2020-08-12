@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  devise_scope :user do
-    root to: "devise/registrations#edit"
-  end
 
   use_doorkeeper do
     # Only use applications_controller to manage OAuth2 applications

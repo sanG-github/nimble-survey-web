@@ -2,8 +2,9 @@
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
+  # :registerable,
   # :confirmable, :lockable, :timeoutable, :trackable, :rememberable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :validatable
+  devise :database_authenticatable, :recoverable, :validatable
 
   has_many :access_tokens,
            class_name: 'Doorkeeper::AccessToken',

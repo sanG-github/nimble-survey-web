@@ -16,12 +16,7 @@ module.exports = {
           default: 'var(--color-white)',
           180: 'var(--color-white-180)',
           200: 'var(--color-white-200)',
-          300: 'var(--color-white-300)',
-          500: 'var(--color-white-500)',
           600: 'var(--color-white-600)'
-        },
-        red: {
-          500: 'var(--color-red-500)'
         }
       },
       fontFamily: {
@@ -40,9 +35,6 @@ module.exports = {
         normal: '-0.41px',
         wide: '-0.24px',
         wider: '-0.08px'
-      },
-      margin: {
-        11: '44px'
       }
     }
   },

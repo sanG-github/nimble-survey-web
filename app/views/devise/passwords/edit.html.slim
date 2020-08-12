@@ -1,0 +1,17 @@
+- content_for(:description) do
+  h2 = t('devise.passwords.description')
+
+= form_with(model: resource, url: password_path(resource_name), local: true, html: { method: :put }) do |f|
+  = render 'devise/shared/error_messages', resource: resource
+  = f.hidden_field :reset_password_token
+
+  .form__group
+    = f.label :password, t('devise.passwords.new_password'), class: 'form__label'
+    = f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'form__control form__control--full'
+
+  .form__group
+    = f.label :password_confirmation, t('devise.passwords.confirm_new_password'), class: 'form__label'
+    = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form__control form__control--full'
+
+  .form__actions
+    = f.submit t('devise.passwords.change_your_password'), class: 'btn btn--full'
