@@ -7,11 +7,14 @@
 
   .form__group
     = f.label :password, t('devise.passwords.new_password'), class: 'form__label'
-    = f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'form__control form__control--full'
+    = f.password_field :password, autofocus: true,
+                       autocomplete: 'new-password',
+                       class: 'form__control form__control--full'
 
   .form__group
     = f.label :password_confirmation, t('devise.passwords.confirm_new_password'), class: 'form__label'
-    = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form__control form__control--full'
+    = f.password_field :password_confirmation, autocomplete: 'new-password',
+                       class: 'form__control form__control--full'
 
   .form__actions
     = f.submit t('devise.passwords.change_your_password'), class: 'btn btn--full'
