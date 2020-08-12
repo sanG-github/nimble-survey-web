@@ -1,6 +1,11 @@
 require_relative 'boot'
 
-require 'rails/all'
+require 'active_record/railtie'
+require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_view/railtie'
+require 'action_mailer/railtie'
+require 'action_cable/engine'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -31,5 +36,5 @@ module NimbleSurveyWeb
 
     # Automatically generate the `translation.js` files
     config.middleware.use I18n::JS::Middleware
-end
+  end
 end

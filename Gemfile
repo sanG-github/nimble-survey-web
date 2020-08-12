@@ -22,7 +22,6 @@ gem 'doorkeeper' # An OAuth 2 provider for Ruby on Rails
 
 # Assets
 gem 'webpacker', '4.0' # Transpile app-like JavaScript
-gem 'sass-rails' # SASS
 gem 'inline_svg' # Use Inline SVG for styling SVG with CSS
 
 # Templating
@@ -51,7 +50,6 @@ group :development, :test do
   gem 'pry-byebug' # Step by step debugging and stack navigation in Pry
   gem 'listen', '3.1.5' # Listens to file modifications
   gem 'letter_opener' # Preview mail in the browser instead of sending.
-  gem 'sassc-rails' # Gem to generate scss source maps.
   gem 'brakeman', require: false # A static analysis security vulnerability scanner for Ruby on Rails applications
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false

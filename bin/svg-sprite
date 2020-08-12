@@ -1,7 +1,7 @@
 # Generates an SVG sprite from a folder of SVG icons.
 #
 # Uses `svgeez` gem.
-#   https://github.com/nimbl3/svgeez
+#   https://github.com/nimblehq/svgeez
 #
 # Usage
 #  -s --source:	Path to the folder of source SVGs (defaults to ./_svgeez).
@@ -9,7 +9,7 @@
 #  --with-svgo:	Optimize SVG sprite file with SVGO
 
 # Generate the sprite file which includes the `icon-` prefix
-bin/bundle exec svgeez build --source app/assets/images/icons/ --destination app/assets/images/icon.svg --with-svgo
+bin/bundle exec svgeez build --source app/javascript/images/icons/ --destination app/javascript/images/icon.svg --with-svgo
 
 # Rename the icon.svg to icon-sprite.svg
-mv app/assets/images/icon.svg app/assets/images/icon-sprite.svg
+mv app/javascript/images/icon.svg app/javascript/images/icon-sprite.svg
