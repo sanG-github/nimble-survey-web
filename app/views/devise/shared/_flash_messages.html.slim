@@ -1,0 +1,8 @@
+.form__message
+  .message__icon
+    = svg_tag(icon_id: 'icon-notice', html: { class: 'fill-current h-6 w-6' })
+  .message__content
+    p.message__title = t('devise.message.flash')
+    ul.message__list
+      - flash.each do |_type, message|
+        li.message__item = message

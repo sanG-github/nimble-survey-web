@@ -27,11 +27,14 @@ en:
         subject: "Email Changed"
       password_change:
         subject: "Password Changed"
+    message:
+      flash: "Notice"
+      error: "Error"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
-      change_your_password: "Change your password"
+      change_password: "Change my password"
       confirm_new_password: "Confirm new password"
       description: "Reset your password"
       new_password: "New password"

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { passwords: 'passwords' }
 
   use_doorkeeper do
     # Only use applications_controller to manage OAuth2 applications

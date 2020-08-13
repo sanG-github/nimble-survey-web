@@ -1,0 +1,4 @@
+- if resource.errors.any?
+  = render 'devise/shared/error_messages', resource: resource
+- elsif flash.any?
+  = render 'devise/shared/flash_messages'
