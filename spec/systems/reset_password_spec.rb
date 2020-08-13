@@ -67,10 +67,7 @@ private
 
 def visit_reset_password_path
   raw, hashed = Devise.token_generator.generate(User, :reset_password_token)
-  user = Fabricate(:user)
-  user.reset_password_token = hashed
-  user.reset_password_sent_at = Time.current
-  user.save
+  Fabricate(:user, reset_password_token: hashed, reset_password_sent_at: Time.current)
 
   visit edit_user_password_path(reset_password_token: raw)
 end
