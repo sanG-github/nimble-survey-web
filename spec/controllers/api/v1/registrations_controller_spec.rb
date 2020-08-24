@@ -5,20 +5,27 @@ require 'rails_helper'
 RSpec.describe API::V1::RegistrationsController, type: :controller do
   describe 'Filters' do
     it { is_expected.not_to use_before_action(:verify_authenticity_token) }
+    it { is_expected.to use_before_action(:verify_oauth_application) }
   end
 
-  describe 'POST#create' do
+  describe 'POST#create', devise_mapping: true do
     context 'given a valid oauth application' do
       context 'given a valid request' do
         context 'given password_confirmation param' do
           it 'returns created status' do
-            post :create, params: { email: 'hoang@example.com', password: '123456', password_confirmation: '123456' }.merge(oauth_application_params)
+            user_info = {
+              email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response).to have_http_status(:created)
           end
 
           it 'returns an empty response body' do
-            post :create, params: { email: 'hoang@example.com', password: '123456', password_confirmation: '123456' }.merge(oauth_application_params)
+            user_info = {
+              email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response.body).to be_empty
           end
@@ -26,13 +33,19 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
 
         context 'given no password_confirmation param' do
           it 'returns created status' do
-            post :create, params: { email: 'hoang@example.com', password: '123456' }.merge(oauth_application_params)
+            user_info = {
+              email: 'dev@nimblehq.co', password: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response).to have_http_status(:created)
           end
 
           it 'returns an empty response body' do
-            post :create, params: { email: 'hoang@example.com', password: '123456' }.merge(oauth_application_params)
+            user_info = {
+              email: 'dev@nimblehq.co', password: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response.body).to be_empty
           end
@@ -40,7 +53,7 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
       end
 
       context 'given an invalid request' do
-        context 'given no params' do
+        context 'given no user param' do
           it 'returns unprocessable_entity status' do
             post :create, params: oauth_application_params
 
@@ -61,13 +74,19 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
 
         context 'given no email param' do
           it 'returns unprocessable_entity status' do
-            post :create, params: { password: '123456' }.merge(oauth_application_params)
+            user_info = {
+              password: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response).to have_http_status(:unprocessable_entity)
           end
 
           it 'has an error message' do
-            post :create, params: { password: '123456' }.merge(oauth_application_params)
+            user_info = {
+              password: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expected_response = {
               errors: [
@@ -80,17 +99,21 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
 
         context 'given an existing email' do
           it 'returns unprocessable_entity status' do
-            Fabricate(:user, email: 'hoang@example.com')
-
-            post :create, params: { email: 'hoang@example.com', password: '123456' }.merge(oauth_application_params)
+            Fabricate(:user, email: 'dev@nimblehq.co')
+            user_info = {
+              email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response).to have_http_status(:unprocessable_entity)
           end
 
           it 'has a message' do
-            Fabricate(:user, email: 'hoang@example.com')
-
-            post :create, params: { email: 'hoang@example.com', password: '123456' }.merge(oauth_application_params)
+            Fabricate(:user, email: 'dev@nimblehq.co')
+            user_info = {
+              email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expected_response = {
               errors: [
@@ -103,13 +126,19 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
 
         context 'given an invalid email' do
           it 'returns unprocessable_entity status' do
-            post :create, params: { email: 'email', password: '123456' }.merge(oauth_application_params)
+            user_info = {
+              email: 'email', password: '123456', password_confirmation: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response).to have_http_status(:unprocessable_entity)
           end
 
           it 'has an error message' do
-            post :create, params: { email: 'email', password: '123456' }.merge(oauth_application_params)
+            user_info = {
+              email: 'email', password: '123456', password_confirmation: '123456'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expected_response = {
               errors: [
@@ -122,13 +151,19 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
 
         context 'given no password param' do
           it 'returns unprocessable_entity status' do
-            post :create, params: { email: 'hoang@gmail.com' }.merge(oauth_application_params)
+            user_info = {
+              email: 'dev@nimblehq.co'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response).to have_http_status(:unprocessable_entity)
           end
 
           it 'has an error message' do
-            post :create, params: { email: 'hoang@gmail.com' }.merge(oauth_application_params)
+            user_info = {
+              email: 'dev@nimblehq.co'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expected_response = {
               errors: [
@@ -141,13 +176,19 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
 
         context 'given a short password' do
           it 'returns unprocessable_entity status' do
-            post :create, params: { email: 'hoang@gmail.com', password: '1' }.merge(oauth_application_params)
+            user_info = {
+              email: 'dev@nimblehq.co', password: '1', password_confirmation: '1'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expect(response).to have_http_status(:unprocessable_entity)
           end
 
           it 'has an error message' do
-            post :create, params: { email: 'hoang@gmail.com', password: '1' }.merge(oauth_application_params)
+            user_info = {
+              email: 'dev@nimblehq.co', password: '1', password_confirmation: '1'
+            }
+            post :create, params: { user: user_info }.merge(oauth_application_params)
 
             expected_response = {
               errors: [
@@ -162,13 +203,19 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
 
     context 'given an invalid oauth application' do
       it 'returns forbidden status' do
-        post :create, params: { email: 'hoang@example.com', password: '123456' }
+        user_info = {
+          email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
+        }
+        post :create, params: { user: user_info }.merge({ client_id: '', client_secret: '' })
 
         expect(response).to have_http_status(:forbidden)
       end
 
       it 'returns an error message' do
-        post :create, params: { email: 'hoang@example.com', password: '123456' }
+        user_info = {
+          email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
+        }
+        post :create, params: { user: user_info }.merge({ client_id: '', client_secret: '' })
 
         expected_response = {
           errors: [

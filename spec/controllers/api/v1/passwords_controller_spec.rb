@@ -5,23 +5,24 @@ require 'rails_helper'
 RSpec.describe API::V1::PasswordsController, type: :controller do
   describe 'Filters' do
     it { is_expected.not_to use_before_action(:verify_authenticity_token) }
+    it { is_expected.to use_before_action(:verify_oauth_application) }
   end
 
   describe 'POST#create', devise_mapping: true do
     context 'given a valid oauth application' do
       context 'given a valid request' do
         it 'returns success status' do
-          Fabricate(:user, email: 'hoang@example.com')
+          Fabricate(:user, email: 'dev@nimblehq.co')
 
-          post :create, params: { email: 'hoang@example.com' }.merge(oauth_application_params)
+          post :create, params: { email: 'dev@nimblehq.co' }.merge(oauth_application_params)
 
           expect(response).to have_http_status(:success)
         end
 
         it 'has a message' do
-          Fabricate(:user, email: 'hoang@example.com')
+          Fabricate(:user, email: 'dev@nimblehq.co')
 
-          post :create, params: { email: 'hoang@example.com' }.merge(oauth_application_params)
+          post :create, params: { email: 'dev@nimblehq.co' }.merge(oauth_application_params)
 
           expected_response = {
             meta: {
@@ -54,13 +55,13 @@ RSpec.describe API::V1::PasswordsController, type: :controller do
 
         context 'given a non-existing email' do
           it 'returns success status' do
-            post :create, params: { email: 'hoang@example.com' }.merge(oauth_application_params)
+            post :create, params: { email: 'dev@nimblehq.co' }.merge(oauth_application_params)
 
             expect(response).to have_http_status(:success)
           end
 
           it 'has a message' do
-            post :create, params: { email: 'hoang@example.com' }.merge(oauth_application_params)
+            post :create, params: { email: 'dev@nimblehq.co' }.merge(oauth_application_params)
 
             expected_response = {
               meta: {
@@ -75,13 +76,13 @@ RSpec.describe API::V1::PasswordsController, type: :controller do
 
     context 'given an invalid oauth application' do
       it 'returns forbidden status' do
-        post :create, params: { email: 'hoang@example.com' }
+        post :create, params: { email: 'dev@nimblehq.co' }
 
         expect(response).to have_http_status(:forbidden)
       end
 
       it 'returns an error message' do
-        post :create, params: { email: 'hoang@example.com' }
+        post :create, params: { email: 'dev@nimblehq.co' }
 
         expected_response = {
           errors: [

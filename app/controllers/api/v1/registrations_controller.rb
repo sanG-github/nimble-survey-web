@@ -2,24 +2,20 @@
 
 module API
   module V1
-    class RegistrationsController < ApplicationController
-      before_action :verify_oauth_application
-      skip_before_action :doorkeeper_authorize!
+    class RegistrationsController < Devise::RegistrationsController
+      include API::V1::OauthApplicationVerifiable
 
       def create
-        user = User.new(create_params)
+        super do |user|
+          if user.persisted?
+            head :created
+          else
+            render_error(detail: user.errors.full_messages.to_sentence)
+          end
 
-        if user.save
-          head :created
-        else
-          render_error(detail: user.errors.full_messages.to_sentence)
+          # Skip devise's response
+          return
         end
-      end
-
-      private
-
-      def create_params
-        params.permit(:email, :password, :password_confirmation)
       end
     end
   end
