@@ -2,7 +2,7 @@
 
 module API
   module V1
-    module Error
+    module ErrorHandler
       extend ActiveSupport::Concern
 
       private

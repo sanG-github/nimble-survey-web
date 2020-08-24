@@ -3,7 +3,7 @@
 module API
   module V1
     class TokensController < Doorkeeper::TokensController
-      include API::V1::Error
+      include API::V1::ErrorHandler
 
       private
 

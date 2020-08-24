@@ -3,7 +3,7 @@
 module API
   module V1
     class ApplicationController < ActionController::API
-      include API::V1::Error
+      include API::V1::ErrorHandler
 
       before_action :doorkeeper_authorize!
 

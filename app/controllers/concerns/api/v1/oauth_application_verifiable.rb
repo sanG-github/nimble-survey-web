@@ -4,7 +4,7 @@ module API
   module V1
     module OauthApplicationVerifiable
       extend ActiveSupport::Concern
-      include API::V1::Error
+      include API::V1::ErrorHandler
 
       included do
         skip_before_action :verify_authenticity_token
