@@ -9,7 +9,7 @@ require('channels');
 
 import 'translations/translations';
 
-import 'stylesheets/_core.scss';
+import 'stylesheets/application.scss';
 import 'initializers/';
 import 'screens/';
 
@@ -19,4 +19,4 @@ import 'screens/';
 
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-require.context('../images', true);
+require.context('images', true);
