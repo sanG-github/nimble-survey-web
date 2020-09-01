@@ -10,7 +10,7 @@ RSpec.describe API::V1::PasswordsController, type: :controller do
 
   describe 'POST#create', devise_mapping: true do
     context 'given a valid oauth application' do
-      context 'given a valid request' do
+      context 'given valid params' do
         it 'returns success status' do
           Fabricate(:user, email: 'dev@nimblehq.co')
 
@@ -33,7 +33,7 @@ RSpec.describe API::V1::PasswordsController, type: :controller do
         end
       end
 
-      context 'given an invalid request' do
+      context 'given invalid params' do
         context 'given no email' do
           it 'returns success status' do
             post :create, params: oauth_application_params

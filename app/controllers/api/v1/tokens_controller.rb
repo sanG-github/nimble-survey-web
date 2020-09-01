@@ -9,7 +9,8 @@ module API
 
       def revocation_error_response
         {
-          errors: errors(detail: I18n.t('doorkeeper.errors.messages.revoke.unauthorized'), code: :unauthorized_client)
+          errors: build_errors(detail: I18n.t('doorkeeper.errors.messages.revoke.unauthorized'),
+                               code: :unauthorized_client)
         }
       end
     end

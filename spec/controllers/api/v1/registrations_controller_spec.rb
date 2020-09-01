@@ -10,49 +10,27 @@ RSpec.describe API::V1::RegistrationsController, type: :controller do
 
   describe 'POST#create', devise_mapping: true do
     context 'given a valid oauth application' do
-      context 'given a valid request' do
-        context 'given password_confirmation param' do
-          it 'returns created status' do
-            user_info = {
-              email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
-            }
-            post :create, params: { user: user_info }.merge(oauth_application_params)
+      context 'given valid params' do
+        it 'returns created status' do
+          user_info = {
+            email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
+          }
+          post :create, params: { user: user_info }.merge(oauth_application_params)
 
-            expect(response).to have_http_status(:created)
-          end
-
-          it 'returns an empty response body' do
-            user_info = {
-              email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
-            }
-            post :create, params: { user: user_info }.merge(oauth_application_params)
-
-            expect(response.body).to be_empty
-          end
+          expect(response).to have_http_status(:created)
         end
 
-        context 'given no password_confirmation param' do
-          it 'returns created status' do
-            user_info = {
-              email: 'dev@nimblehq.co', password: '123456'
-            }
-            post :create, params: { user: user_info }.merge(oauth_application_params)
+        it 'returns an empty response body' do
+          user_info = {
+            email: 'dev@nimblehq.co', password: '123456', password_confirmation: '123456'
+          }
+          post :create, params: { user: user_info }.merge(oauth_application_params)
 
-            expect(response).to have_http_status(:created)
-          end
-
-          it 'returns an empty response body' do
-            user_info = {
-              email: 'dev@nimblehq.co', password: '123456'
-            }
-            post :create, params: { user: user_info }.merge(oauth_application_params)
-
-            expect(response.body).to be_empty
-          end
+          expect(response.body).to be_empty
         end
       end
 
-      context 'given an invalid request' do
+      context 'given invalid params' do
         context 'given no user param' do
           it 'returns unprocessable_entity status' do
             post :create, params: oauth_application_params

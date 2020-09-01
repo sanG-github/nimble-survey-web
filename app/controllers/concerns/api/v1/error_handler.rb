@@ -10,12 +10,12 @@ module API
       # Render Error Message in json_api format
       # :reek:LongParameterList { max_params: 5 }
       def render_error(detail:, source: nil, meta: nil, status: :unprocessable_entity, code: nil)
-        errors = errors(detail: detail, source: source, meta: meta, code: code)
+        errors = build_errors(detail: detail, source: source, meta: meta, code: code)
 
         render json: { errors: errors }, status: status
       end
 
-      def errors(detail:, source: nil, meta: nil, code: nil)
+      def build_errors(detail:, source: nil, meta: nil, code: nil)
         [
           {
             source: source,

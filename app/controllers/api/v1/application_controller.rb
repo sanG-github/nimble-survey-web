@@ -18,7 +18,7 @@ module API
 
         {
           json: {
-            errors: errors(detail: error.description, source: error.state, code: error.name)
+            errors: build_errors(detail: error.description, source: error.state, code: error.name)
           }
         }
       end
