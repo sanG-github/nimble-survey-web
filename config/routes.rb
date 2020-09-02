@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { passwords: 'passwords' }
+  devise_for :users, skip: %i[sessions passwords]
+  devise_scope :user do
+    resource :password, only: %i[edit update], as: 'user_password'
+  end
 
   use_doorkeeper do
     # Only use applications_controller to manage OAuth2 applications
