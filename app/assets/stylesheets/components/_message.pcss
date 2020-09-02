@@ -1,4 +1,9 @@
 .message {
+  @apply w-full flex p-5 rounded-normal;
+
+  background: rgba(37, 37, 37, 0.6);
+  backdrop-filter: blur(54px);
+
   &__content {
     @apply ml-5;
   }
@@ -11,8 +16,8 @@
     @apply text-white-600 text-xs tracking-wider;
   }
 
-  &_bullet-icon {
-    @pply mr-1;
+  &__list-icon {
+    @apply mr-1;
   }
 
   &__list {
