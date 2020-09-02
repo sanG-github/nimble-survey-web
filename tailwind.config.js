@@ -32,9 +32,9 @@ module.exports = {
         14: '56px'
       },
       letterSpacing: {
-        normal: '-0.41px',
-        wide: '-0.24px',
-        wider: '-0.08px'
+        tightest: '-0.41px',
+        tighter: '-0.24px',
+        tight: '-0.08px'
       }
     }
   },
