@@ -15,6 +15,7 @@ module API
         render json: { errors: errors }, status: status
       end
 
+      # :reek:LongParameterList { max_params: 4 }
       def build_errors(detail:, source: nil, meta: nil, code: nil)
         [
           {
