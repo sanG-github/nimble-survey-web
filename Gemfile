@@ -21,7 +21,7 @@ gem 'pundit' # Minimal authorization through OO design and pure Ruby classes
 gem 'doorkeeper' # An OAuth 2 provider for Ruby on Rails
 
 # Assets
-gem 'webpacker', '4.0' # Transpile app-like JavaScript
+gem 'webpacker', '~>5.2.0' # Transpile app-like JavaScript
 gem 'inline_svg' # Use Inline SVG for styling SVG with CSS
 
 # Templating
