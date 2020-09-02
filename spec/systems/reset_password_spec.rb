@@ -7,7 +7,7 @@ describe 'Reset password', type: :system do
     {
       logo: '.app-main__logo',
       description: '.app-main__description',
-      form_message: '.form__message',
+      form_message: '.message',
       form_password: 'form',
       password_field: 'user[password]',
       password_confirmation_field: 'user[password_confirmation]'

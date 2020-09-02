@@ -51,7 +51,7 @@ module Associations
   # :reek:TooManyStatements
   def assign_has_one_associations(attributes)
     has_one_associations.each do |attribute_name, klass|
-      object_hash = attributes.dig(attribute_name)
+      object_hash = attributes[attribute_name]
       next if object_hash.nil?
 
       public_send("#{attribute_name}=", klass.new(object_hash))
@@ -67,13 +67,13 @@ module Associations
   # :reek:TooManyStatements
   def assign_has_many_associations(attributes)
     has_many_associations.each do |attribute_name, klass|
-      objects_hash = attributes.dig(attribute_name)
+      objects_hash = attributes[attribute_name]
       next if objects_hash.nil?
 
       public_send("#{attribute_name}=", objects_hash.map { |object_hash| klass.new(object_hash) })
 
       define_singleton_method "#{attribute_name.to_s.singularize}_ids" do
-        objects_hash.map { |object_hash| object_hash[:id] }
+        objects_hash.pluck(:id)
       end
     end
   end
@@ -82,7 +82,7 @@ module Associations
   # :reek:TooManyStatements
   def assign_belongs_to_association(attributes)
     belongs_to_associations.each do |attribute_name, klass|
-      object_hash = attributes.dig(attribute_name)
+      object_hash = attributes[attribute_name]
       next if object_hash.nil?
 
       public_send("#{attribute_name}=", klass.new(object_hash))
