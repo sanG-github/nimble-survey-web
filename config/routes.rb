@@ -5,12 +5,16 @@ Rails.application.routes.draw do
   end
 
   use_doorkeeper do
+    # Only use applications_controller to manage OAuth2 applications
+    # and mount it outside api/v1 as it has the views
+
     skip_controllers :tokens, :authorizations, :token_info, :authorized_applications
   end
 
   scope :api do
     scope :v1 do
       use_doorkeeper do
+        # Only need the tokens_controller for API V1
         controllers tokens: 'api/v1/tokens'
 
         skip_controllers :applications, :authorizations, :token_info, :authorized_applications
