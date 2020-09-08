@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: %i[sessions passwords]
+  devise_for :users, skip: %i[sessions passwords registrations]
   devise_scope :user do
     resource :password, only: %i[edit update], as: 'user_password'
   end
