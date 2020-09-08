@@ -39,6 +39,13 @@ Doorkeeper.configure do
   #   end
   # end
 
+  admin_authenticator do
+    if Rails.env.production?
+      http_basic_authenticate_or_request_with(name: BASIC_AUTHENTICATION_USERNAME,
+                                              password: BASIC_AUTHENTICATION_PASSWORD)
+    end
+  end
+
   # You can use your own model classes if you need to extend (or even override) default
   # Doorkeeper models such as `Application`, `AccessToken` and `AccessGrant.
   #
@@ -89,7 +96,7 @@ Doorkeeper.configure do
   # want to use API mode that will skip all the views management and change the way how
   # Doorkeeper responds to a requests.
   #
-  api_only
+  # api_only
 
   # Enforce token request content type to application/x-www-form-urlencoded.
   # It is not enabled by default to not break prior versions of the gem.
@@ -131,7 +138,7 @@ Doorkeeper.configure do
   # +ActionController::API+. The return value of this option must be a stringified class name.
   # See https://doorkeeper.gitbook.io/guides/configuration/other-configurations#custom-base-controller
   #
-  base_controller 'ActionController::API'
+  # base_controller 'ActionController::API'
 
   # Reuse access token for the same resource owner within an application (disabled by default).
   #
