@@ -1,6 +1,8 @@
 en:
-  page_title:
-    general: Nimble Survey Web
-    passwords:
-      edit: Reset password
+  shared:
+    page_title: Nimble Survey
+
+  passwords:
+    edit:
+      page_title: Reset password
 
