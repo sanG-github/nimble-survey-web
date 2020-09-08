@@ -68,3 +68,16 @@ jobs:
 
       - name: RSpec
         run: docker-compose run test bundle exec rspec spec/systems --profile
+
+  docker_production_test:
+    name: Docker production test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./.github/actions/branch-tag
+
+      - name: Docker build production
+        run: |
+          bin/docker-prepare
+          docker-compose -f docker-compose.yml build
