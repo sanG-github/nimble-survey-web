@@ -9,9 +9,20 @@
 // Mixins
 
 // Base
+@import 'tailwindcss/base';
+@import 'base/fonts';
+@import 'base/root';
 
 // Layouts
+@import 'layouts/devise.pcss';
 
 // Components
+@import 'tailwindcss/components';
+@import 'components/btn.pcss';
+@import 'components/form.pcss';
+@import 'components/message.pcss';
+
+// Utilities
+@import 'tailwindcss/utilities';
 
 // Screens

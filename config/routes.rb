@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: %i[sessions passwords registrations]
   devise_scope :user do
-    root to: "devise/registrations#edit"
+    resource :password, only: %i[edit update], as: 'user_password'
   end
 
   use_doorkeeper do

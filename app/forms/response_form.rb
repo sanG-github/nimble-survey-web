@@ -8,6 +8,8 @@ class ResponseForm < ApplicationForm
   validate :validate_questions, if: -> { survey }
 
   def initialize(params = {})
+    super(nil)
+
     @survey = Survey.find_by(id: params[:survey_id])
     @questions = params[:questions]
   end

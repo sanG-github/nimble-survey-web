@@ -1,0 +1,11 @@
+.message
+  .message__icon
+    = svg_tag(icon_id: 'icon-warning', html: { class: 'fill-current h-6 w-6' })
+  .message__content
+    p.message__title = t('devise.message.error')
+    ul.message__list
+      - resource.errors.full_messages.each do |message|
+        li.message__item
+          - unless resource.errors.one?
+            span.message__list-icon •
+          = message

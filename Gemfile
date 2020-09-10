@@ -21,8 +21,11 @@ gem 'pundit' # Minimal authorization through OO design and pure Ruby classes
 gem 'doorkeeper' # An OAuth 2 provider for Ruby on Rails
 
 # Assets
-gem 'webpacker', '4.0' # Transpile app-like JavaScript
-gem 'sass-rails' # SASS
+gem 'webpacker', '~>5.2.0' # Transpile app-like JavaScript
+gem 'inline_svg' # Use Inline SVG for styling SVG with CSS
+
+# Templating
+gem 'slim' # light weight template engine
 
 # Translations
 # gem 'rails-i18n', '~> 6.0.0' # Translations for Rails
@@ -37,6 +40,7 @@ group :development do
   gem 'spring' # Spring speeds up development by keeping your application running in the background.
   gem 'spring-commands-rspec' # This gem implements the rspec command for Spring.
   gem 'spring-watcher-listen', '2.0.1' # Makes Spring watch the filesystem for changes using Listen
+  gem 'svgeez' # Gem for generating an SVG sprite from a folder of SVG icons.
 end
 
 group :development, :test do
@@ -46,7 +50,6 @@ group :development, :test do
   gem 'pry-byebug' # Step by step debugging and stack navigation in Pry
   gem 'listen', '3.1.5' # Listens to file modifications
   gem 'letter_opener' # Preview mail in the browser instead of sending.
-  gem 'sassc-rails' # Gem to generate scss source maps.
   gem 'brakeman', require: false # A static analysis security vulnerability scanner for Ruby on Rails applications
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
