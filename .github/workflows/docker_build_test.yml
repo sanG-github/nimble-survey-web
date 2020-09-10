@@ -1,6 +1,10 @@
 name: Docker build test
 
-on: push
+on:
+  push:
+    branches-ignore:
+      - master
+      - development
 
 jobs:
   docker_production_test:
