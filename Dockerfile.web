@@ -1,5 +1,6 @@
+ARG DOCKER_REGISTRY=docker.io
 ARG DOCKER_IMAGE=nimblehq/nimble-survey-web
-ARG BRANCH_TAG=latest
-FROM ${DOCKER_IMAGE}:${BRANCH_TAG}
+ARG BRANCH_TAG=master
+FROM ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BRANCH_TAG}
 
 CMD ["./bin/start.sh"]
