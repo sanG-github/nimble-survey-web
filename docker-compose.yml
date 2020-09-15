@@ -30,6 +30,8 @@ services:
         - MAILGUN_SMTP_LOGIN
         - MAILGUN_SMTP_PASSWORD
         - APP_DOMAIN
+        - BASIC_AUTHENTICATION_USERNAME
+        - BASIC_AUTHENTICATION_PASSWORD
     image: ${DOCKER_IMAGE}:${BRANCH_TAG}
     container_name: nimble_survey_web_web
     command: bin/start.sh

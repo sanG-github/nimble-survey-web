@@ -2,12 +2,12 @@
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable, :rememberable, :validatable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable
+  # :confirmable, :lockable, :timeoutable, :trackable, :rememberable and :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :validatable
 
   has_many :access_tokens,
            class_name: 'Doorkeeper::AccessToken',
            foreign_key: :resource_owner_id,
-           inverse_of: :user,
-           dependent: :destroy
+           inverse_of: :resource_owner,
+           dependent: :delete_all
 end

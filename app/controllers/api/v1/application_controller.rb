@@ -3,6 +3,8 @@
 module API
   module V1
     class ApplicationController < ActionController::API
+      include API::V1::ErrorHandler
+
       before_action :doorkeeper_authorize!
 
       private
@@ -11,19 +13,15 @@ module API
         User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
       end
 
-      # Render Error Message in json_api format
-      # :reek:LongParameterList { max_params: 5 }
-      def render_error(detail:, source: nil, meta: nil, status: :unprocessable_entity, code: nil)
-        errors = [
-          {
-            source: source,
-            detail: detail,
-            code: code,
-            meta: meta
-          }.compact
-        ]
+      # :reek:FeatureEnvy
+      def doorkeeper_unauthorized_render_options(error: nil)
+        return unless error
 
-        render json: { errors: errors }, status: status
+        {
+          json: {
+            errors: build_errors(detail: error.description, source: error.state, code: error.name)
+          }
+        }
       end
     end
   end

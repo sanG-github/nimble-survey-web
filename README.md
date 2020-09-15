@@ -95,3 +95,19 @@ docker-compose -f docker-compose.test.yml run test bin/bundle exec spec [rspec-p
 * Add a bot to this repository or to the organization. The bot requires permission level “Write” to be able to set a PR’s status
 
 * Create a token from bot account with `public_repo` scope, and use it to create a `DANGER_GITHUB_API_TOKEN` secret on this repository
+
+## SVG Icons
+
+- Install the [SVGO](https://github.com/svg/svgo) as global (if you din't install it)
+
+        yarn global add svgo
+
+- We place the icons in `/app/assets/images/icons` and use [Svgeez](https://github.com/jgarber623/svgeez) to generate icon sprite
+
+- To generate icon sprite:
+
+        bin/svg-sprite
+
+- To use the icon we use `svg_tag` provided in `SvgHelper` and provided `icon_id` matched with icon file name with prefix `icon-`:
+
+        svg_tag icon_id: 'icon-[icon-file-name]', html: {}

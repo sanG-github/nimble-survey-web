@@ -1,0 +1,10 @@
+:root {
+  // Colors
+  --color-original-black: #{map-get($color-black, default)};
+  --color-white: #{map-get($color-white, default)};
+  --color-black: #{map-get($color-black, 500)};
+  --color-white-180: #{map-get($color-white, 180)};
+  --color-white-200: #{map-get($color-white, 200)};
+  --color-white-600: #{map-get($color-white, 600)};
+  --color-input-webkit-box-shadow: rgb(93, 91, 89);
+}

@@ -1,0 +1,23 @@
+name: Docker build test
+
+on:
+  push:
+    branches-ignore:
+      - master
+      - development
+
+jobs:
+  docker_production_test:
+    name: Docker production test
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: nimblehq/branch-tag-action@v1
+
+      - name: Docker build production
+        run: |
+          bin/docker-prepare
+          docker-compose build

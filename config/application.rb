@@ -31,5 +31,5 @@ module NimbleSurveyWeb
 
     # Automatically generate the `translation.js` files
     config.middleware.use I18n::JS::Middleware
-end
+  end
 end

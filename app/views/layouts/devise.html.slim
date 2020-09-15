@@ -1,0 +1,26 @@
+doctype html
+html.layout-devise lang=I18n.locale
+  head
+    meta charset='UTF-8'
+    meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'
+
+    title
+      = page_title
+    == csrf_meta_tags
+    == csp_meta_tag
+
+    == javascript_pack_tag 'application'
+    == stylesheet_pack_tag 'application'
+
+  body
+    main.app-main
+      .app-main__container
+        .app-main__logo
+          = svg_tag(icon_id: 'icon-logo', html: { class: 'w-full h-full' })
+        - if content_for?(:description)
+          .app-main__description
+            = content_for(:description)
+        .app-main__content
+          == yield
+
+    = inline_svg_pack_tag 'media/images/icon-sprite.svg'

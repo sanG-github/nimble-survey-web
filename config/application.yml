@@ -1,4 +1,6 @@
 default: &default
+  BASIC_AUTHENTICATION_PASSWORD: "password"
+  BASIC_AUTHENTICATION_USERNAME: "username"
   DB_NAME: "nimble_survey_web"
   DB_HOST: "localhost"
   DB_PORT: "5432"

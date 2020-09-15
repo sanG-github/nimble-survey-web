@@ -3,72 +3,50 @@
 require 'rails_helper'
 
 RSpec.describe API::V1::TokensController, type: :controller do
-  describe 'Filters' do
-    it { is_expected.not_to use_before_action(:doorkeeper_authorize!) }
-  end
-
   describe 'POST#revoke' do
-    context 'given a valid access token' do
+    context 'given a valid oauth application' do
       it 'returns success status' do
-        Fabricate(:access_token, token: 'access_token')
+        application = Fabricate(:application)
+        Fabricate(:access_token, token: 'access_token', application_id: application.id)
+
+        post :revoke, params: { token: 'access_token' }.merge(oauth_application_params(application))
+
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'returns an empty response' do
+        application = Fabricate(:application)
+        Fabricate(:access_token, token: 'access_token', application_id: application.id)
+
+        post :revoke, params: { token: 'access_token' }.merge(oauth_application_params(application))
+
+        expect(JSON.parse(response.body)).to be_empty
+      end
+    end
+
+    context 'given an invalid oauth application' do
+      it 'returns forbidden status' do
+        Fabricate(:access_token, token: 'access_token', application_id: Fabricate(:application).id)
 
         post :revoke, params: { token: 'access_token' }
 
-        expect(response).to have_http_status(:success)
+        expect(response).to have_http_status(:forbidden)
       end
 
-      it 'returns an empty response' do
-        Fabricate(:access_token, token: 'access_token')
+      it 'returns an error message' do
+        Fabricate(:access_token, token: 'access_token', application_id: Fabricate(:application).id)
 
         post :revoke, params: { token: 'access_token' }
 
-        expect(JSON.parse(response.body)).to be_empty
-      end
-    end
-
-    context 'given a valid refresh token' do
-      it 'returns success status' do
-        Fabricate(:access_token, refresh_token: 'refresh_token')
-
-        post :revoke, params: { token: 'refresh_token' }
-
-        expect(response).to have_http_status(:success)
-      end
-
-      it 'returns an empty response' do
-        Fabricate(:access_token, refresh_token: 'refresh_token')
-
-        post :revoke, params: { token: 'refresh_token' }
-
-        expect(JSON.parse(response.body)).to be_empty
-      end
-    end
-
-    context 'given an invalid token' do
-      it 'returns success status' do
-        post :revoke, params: { token: 'invalid' }
-
-        expect(response).to have_http_status(:success)
-      end
-
-      it 'returns an empty response' do
-        post :revoke, params: { token: 'invalid' }
-
-        expect(JSON.parse(response.body)).to be_empty
-      end
-    end
-
-    context 'given no token param' do
-      it 'returns success status' do
-        post :revoke
-
-        expect(response).to have_http_status(:success)
-      end
-
-      it 'returns an empty response' do
-        post :revoke
-
-        expect(JSON.parse(response.body)).to be_empty
+        expected_response = {
+          errors: [
+            {
+              code: 'unauthorized_client',
+              detail: 'You are not authorized to revoke this token'
+            }
+          ]
+        }
+        expect(JSON.parse(response.body, symbolize_names: true)).to eq(expected_response)
       end
     end
   end

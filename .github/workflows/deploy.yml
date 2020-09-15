@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - development
+  workflow_dispatch:
 
 env:
   DOCKER_HUB_USERNAME: ${{ github.repository_owner }}
@@ -18,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: ./.github/actions/branch-tag
+      - uses: nimblehq/branch-tag-action@v1
 
       - name: Set HEROKU_APP
         run: |

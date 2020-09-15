@@ -1,0 +1,40 @@
+.form {
+  &__group,
+  &__action {
+    @apply mt-6;
+  }
+
+  &__label {
+    @apply h-5;
+    @apply text-white text-sm font-extrabold tracking-tighter;
+  }
+
+  &__control {
+    @apply h-14 mt-2 px-3;
+    @apply text-white text-base font-normal tracking-tightest;
+    @apply bg-white-180;
+    @apply rounded-normal outline-none border border-transparent cursor-text;
+
+    caret-color: theme('colors.white.default');
+
+    &--full {
+      @apply w-full;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      @apply bg-white-200;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:active,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:hover {
+      border-color: var(--color-input-webkit-box-shadow);
+      -webkit-box-shadow: 0 0 0 1000px var(--color-input-webkit-box-shadow) inset;
+      -webkit-text-fill-color: theme('colors.white.default');
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+}
