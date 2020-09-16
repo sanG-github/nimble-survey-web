@@ -3,7 +3,6 @@
 module Resolvers
   class UserResolver < BaseResolver
     description 'User profile'
-
     type Types::UserType, null: false
 
     def resolve

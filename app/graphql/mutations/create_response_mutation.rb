@@ -3,9 +3,7 @@
 module Mutations
   class CreateResponseMutation < BaseMutation
     description "Create a new survey's response"
-
     argument :response, Types::Inputs::ResponseInput, required: true
-
     field :survey, Types::SurveyType, null: false
     field :questions, [Types::QuestionType], null: false
 

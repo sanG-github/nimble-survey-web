@@ -24,7 +24,7 @@ class ResponseForm < ApplicationForm
   # Check if all submitted questions are contained in survey questions
   def validate_questions
     survey_questions_ids = survey.questions.map(&:id)
-    questions_ids = questions.map { |question| question[:id] }
+    questions_ids = questions.pluck(:id)
 
     return if (survey_questions_ids & questions_ids) == questions_ids
 
