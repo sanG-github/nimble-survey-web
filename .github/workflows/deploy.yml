@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: nimblehq/branch-tag-action@v1
+      - uses: nimblehq/branch-tag-action@v1.1
 
       - name: Set HEROKU_APP
         run: |
