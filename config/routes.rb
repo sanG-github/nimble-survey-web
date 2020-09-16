@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     skip_controllers :tokens, :authorizations, :token_info, :authorized_applications
   end
 
+  resources :graphql, only: :create
+
   scope :api do
     scope :v1 do
       use_doorkeeper do

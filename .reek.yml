@@ -30,6 +30,12 @@ directories:
       enabled: false
     InstanceVariableAssumption:
       enabled: false
+  "app/graphql":
+    FeatureEnvy:
+      enabled: false
+  "app/graphql/resolvers":
+    UtilityFunction:
+      enabled: false
   "app/helpers":
     IrresponsibleModule:
       enabled: false

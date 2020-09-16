@@ -179,6 +179,7 @@ GEM
     git_diff (0.4.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphql (1.11.1)
     hashdiff (1.0.1)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
@@ -470,6 +471,7 @@ DEPENDENCIES
   ffaker
   figaro
   foreman
+  graphql
   i18n-js (= 3.5.1)
   inline_svg
   json_matchers
