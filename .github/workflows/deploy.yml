@@ -18,13 +18,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+
       - uses: actions/checkout@v2
 
       - uses: nimblehq/branch-tag-action@v1.1
 
       - name: Set HEROKU_APP
         run: |
-          if [[ $BRANCH_TAG = "master" ]]
+          if [[ $BRANCH_TAG = "latest" ]]
           then
             echo "::set-env name=HEROKU_APP::nimble-survey-web"
           else
