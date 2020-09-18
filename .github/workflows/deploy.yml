@@ -1,10 +1,14 @@
 name: Deploy
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Test
     branches:
       - master
       - development
+    types:
+      - completed
   workflow_dispatch:
 
 env:
@@ -17,6 +21,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Cancel previous runs
         uses: styfle/cancel-workflow-action@0.5.0
