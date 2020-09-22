@@ -1,29 +1,40 @@
 name: Deploy
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Test
     branches:
       - master
       - development
+    types:
+      - completed
   workflow_dispatch:
 
 env:
-  DOCKER_HUB_USERNAME: ${{ github.repository_owner }}
-  DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+  DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
+  DOCKER_USERNAME: ${{ github.repository_owner }}
+  DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   DOCKER_IMAGE: ${{ github.repository }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+
       - uses: actions/checkout@v2
 
-      - uses: nimblehq/branch-tag-action@v1
+      - uses: nimblehq/branch-tag-action@v1.1
 
       - name: Set HEROKU_APP
         run: |
-          if [[ $BRANCH_TAG = "master" ]]
+          if [[ $BRANCH_TAG = "latest" ]]
           then
             echo "::set-env name=HEROKU_APP::nimble-survey-web"
           else
@@ -31,7 +42,7 @@ jobs:
           fi
 
       - name: Docker login
-        run: echo "$DOCKER_HUB_TOKEN" | docker login --username=$DOCKER_HUB_USERNAME --password-stdin
+        run: echo "$DOCKER_TOKEN" | docker login $DOCKER_REGISTRY --username=$DOCKER_USERNAME --password-stdin
 
       - name: Docker build
         run: |
@@ -44,5 +55,5 @@ jobs:
 
       - name: Heroku release
         run: |
-          heroku container:push --arg DOCKER_IMAGE=$DOCKER_IMAGE,BRANCH_TAG=$BRANCH_TAG --recursive
+          heroku container:push --arg DOCKER_REGISTRY=$DOCKER_REGISTRY,DOCKER_IMAGE=$DOCKER_IMAGE,BRANCH_TAG=$BRANCH_TAG --recursive
           heroku container:release web worker

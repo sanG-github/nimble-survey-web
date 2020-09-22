@@ -15,6 +15,7 @@ gem 'bootsnap', require: false # Reduces boot times through caching; required in
 gem 'i18n-js', '3.5.1' # A library to provide the I18n translations on the Javascript
 gem 'fast_jsonapi' # A lightning fast JSON:API serializer for Ruby Objects
 gem 'rack-cors' # Provides support for CORS
+gem 'graphql' # Ruby implementation of GraphQL
 
 # Authentications & Authorizations
 gem 'devise' # Authentication solution for Rails with Warden

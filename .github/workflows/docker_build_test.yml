@@ -11,11 +11,17 @@ jobs:
     name: Docker production test
     runs-on: ubuntu-latest
     env:
+      DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
       DOCKER_IMAGE: ${{ github.repository }}
     steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+
       - uses: actions/checkout@v2
 
-      - uses: nimblehq/branch-tag-action@v1
+      - uses: nimblehq/branch-tag-action@v1.1
 
       - name: Docker build production
         run: |
