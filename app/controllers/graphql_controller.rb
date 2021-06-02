@@ -30,4 +30,31 @@ class GraphqlController < ActionController::API
       raise ArgumentError, "Unexpected parameter: #{ambiguous_param}"
     end
   end
+
+  def current_user
+    if doorkeeper_token && !doorkeeper_token.expired?
+      return User.find(doorkeeper_token.resource_owner_id)
+    end
+
+    raise Doorkeeper::Errors::DoorkeeperError, "Invalid access token"
+  end
+
+  # :reek:FeatureEnvy
+  def doorkeeper_unauthorized_render_options(error: nil)
+    return unless error
+
+    {
+      json: {
+        errors: [
+          {
+            message: error.description,
+            extensions: {
+              code: error.name,
+              state: error.state
+            }
+          }
+        ],
+      }
+    }
+  end
 end
