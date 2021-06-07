@@ -32,11 +32,9 @@ class GraphqlController < ActionController::API
   end
 
   def current_user
-    if doorkeeper_token && !doorkeeper_token.expired?
-      return User.find(doorkeeper_token.resource_owner_id)
-    end
+    return User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token && !doorkeeper_token.expired?
 
-    raise Doorkeeper::Errors::DoorkeeperError, "Invalid access token"
+    raise Doorkeeper::Errors::DoorkeeperError, 'Invalid access token'
   end
 
   # :reek:FeatureEnvy
@@ -53,7 +51,7 @@ class GraphqlController < ActionController::API
               state: error.state
             }
           }
-        ],
+        ]
       }
     }
   end
