@@ -38,6 +38,7 @@ class GraphqlController < ActionController::API
   end
 
   # :reek:FeatureEnvy
+  # rubocop:disable Metrics/MethodLength
   def doorkeeper_unauthorized_render_options(error: nil)
     return unless error
 
@@ -55,4 +56,5 @@ class GraphqlController < ActionController::API
       }
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end
