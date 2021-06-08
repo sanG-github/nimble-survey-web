@@ -32,8 +32,8 @@ RSpec.describe GraphqlController, type: :controller do
 
   def sample_query
     <<~GRAPHQL
-      query{
-        profile{
+      query {
+        profile {
           avatarUrl
           email
           id
