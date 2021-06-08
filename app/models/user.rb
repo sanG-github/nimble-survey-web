@@ -13,6 +13,11 @@ class User < ApplicationRecord
 
   delegate :avatar_url, to: :user_decorator
 
+  def valid_attribute?(attribute_name)
+    self.valid?
+    self.errors[attribute_name].blank?
+  end
+
   private
 
   def user_decorator
