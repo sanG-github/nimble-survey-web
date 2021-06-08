@@ -23,7 +23,7 @@ RSpec.describe GraphqlController, type: :controller do
         post :create, params: { query: sample_query, variables: {} }
 
         response_body = JSON.parse(response.body)
-        expect(response_body).to match_json_schema('graphql/invalid_token')
+        expect(response_body).to match_json_schema('graphql/create/invalid_token')
       end
     end
   end
