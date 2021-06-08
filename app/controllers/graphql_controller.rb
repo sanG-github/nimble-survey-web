@@ -31,12 +31,6 @@ class GraphqlController < ActionController::API
     end
   end
 
-  def current_user
-    return User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token && !doorkeeper_token.expired?
-
-    raise Doorkeeper::Errors::DoorkeeperError, 'Invalid access token'
-  end
-
   # :reek:FeatureEnvy
   # rubocop:disable Metrics/MethodLength
   def doorkeeper_unauthorized_render_options(error: nil)
