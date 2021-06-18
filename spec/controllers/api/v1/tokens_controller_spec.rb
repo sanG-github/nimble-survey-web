@@ -8,7 +8,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
       context 'given valid user credentials' do
         it 'returns success status' do
           application = Fabricate(:application)
-          user = Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
+          Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
 
           params = {
             grant_type: 'password',
@@ -23,7 +23,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
 
         it 'returns an empty response' do
           application = Fabricate(:application)
-          user = Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
+          Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
 
           params = {
             grant_type: 'password',
@@ -72,7 +72,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
 
     context 'given an invalid oauth application' do
       it 'returns unauthorized status' do
-        user = Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
+        Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
 
         params = {
           grant_type: 'password',
@@ -86,7 +86,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
       end
 
       it 'returns an error message' do
-        user = Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
+        Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
 
         params = {
           grant_type: 'password',
