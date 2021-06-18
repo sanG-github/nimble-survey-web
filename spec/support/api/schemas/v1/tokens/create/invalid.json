@@ -9,7 +9,12 @@
           "type": "object",
           "properties": {
             "source": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "parameter": {
+                  "type": "string"
+                }
+              }
             },
             "detail": {
               "type": "string"
