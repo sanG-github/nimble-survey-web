@@ -17,12 +17,16 @@
             "email": {
               "type": "string"
             },
+            "name": {
+              "type": "string"
+            },
             "avatar_url": {
               "type": "string"
             }
           },
           "required": [
             "email",
+            "name",
             "avatar_url"
           ]
         }
