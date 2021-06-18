@@ -101,7 +101,9 @@ RSpec.describe API::V1::TokensController, type: :controller do
             {
               code: 'invalid_client',
               detail: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.',
-              source: 'Doorkeeper::OAuth::Error'
+              source: {
+                parameter: 'Doorkeeper::OAuth::Error'
+              }
             }
           ]
         }
