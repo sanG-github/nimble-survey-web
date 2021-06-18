@@ -19,9 +19,7 @@ module API
       def build_errors(detail:, source: nil, meta: nil, code: nil)
         [
           {
-            source: {
-              parameter: source
-            }.compact,
+            source: { parameter: source }.compact,
             detail: detail,
             code: code,
             meta: meta
