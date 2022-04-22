@@ -7,7 +7,7 @@ module API
         response_form = ResponseForm.new(create_params.to_h)
 
         if response_form.save
-          render status: :created
+          render json: {}, status: :created
         else
           render_error(detail: response_form.errors.full_messages.to_sentence)
         end

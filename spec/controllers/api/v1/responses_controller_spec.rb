@@ -13,7 +13,9 @@ RSpec.describe API::V1::ResponsesController, type: :controller do
 
         post :create, params: { survey_id: 'd5de6a8f8f5f1cfe51bc', questions: questions_ids }
 
+        response_body = JSON.parse(response.body)
         expect(response).to have_http_status(:created)
+        expect(response_body).to eq({})
       end
     end
 
