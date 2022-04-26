@@ -68,10 +68,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
             errors: [
               {
                 code: 'invalid_email_or_password',
-                detail: 'Your email or password is incorrect. Please try again.',
-                source: {
-                  parameter: 'Doorkeeper::OAuth::Error'
-                }
+                detail: 'Your email or password is incorrect. Please try again.'
               }
             ]
           }
@@ -113,10 +110,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
           errors: [
             {
               code: 'invalid_client',
-              detail: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.',
-              source: {
-                parameter: 'Doorkeeper::OAuth::Error'
-              }
+              detail: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.'
             }
           ]
         }
