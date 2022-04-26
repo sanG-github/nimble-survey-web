@@ -8,14 +8,6 @@
         {
           "type": "object",
           "properties": {
-            "source": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
-            },
             "detail": {
               "type": "string"
             },
@@ -24,7 +16,6 @@
             }
           },
           "required": [
-            "source",
             "detail",
             "code"
           ]
