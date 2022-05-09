@@ -6,7 +6,6 @@ module Doorkeeper
       {
         errors: [
           {
-            source: { parameter: @error.class.name },
             detail: description,
             code: name
           }.compact

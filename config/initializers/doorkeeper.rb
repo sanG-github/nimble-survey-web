@@ -2,6 +2,7 @@
 
 require 'doorkeeper/custom_token_response'
 require 'doorkeeper/custom_error_response'
+require 'doorkeeper/request/custom_password'
 
 Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (requires ORM extensions installed).
@@ -507,3 +508,8 @@ end
 
 Doorkeeper::OAuth::TokenResponse.send :prepend, Doorkeeper::CustomTokenResponse
 Doorkeeper::OAuth::ErrorResponse.send :prepend, Doorkeeper::CustomErrorResponse
+Doorkeeper::GrantFlow.register(
+  :password,
+  grant_type_matches: "password",
+  grant_type_strategy: Doorkeeper::Request::CustomPassword,
+)
