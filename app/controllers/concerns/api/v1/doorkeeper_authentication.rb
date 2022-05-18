@@ -22,7 +22,7 @@ module API
 
         {
           json: {
-            errors: build_errors(detail: error.description, source: error.state, code: error.name)
+            errors: build_errors(detail: error.description, code: error.name)
           }
         }
       end

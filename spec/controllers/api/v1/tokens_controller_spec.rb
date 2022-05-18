@@ -21,7 +21,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
           expect(response).to have_http_status(:success)
         end
 
-        it 'returns an empty response' do
+        it 'returns correct token attributes' do
           application = Fabricate(:application)
           Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
 
@@ -38,14 +38,14 @@ RSpec.describe API::V1::TokensController, type: :controller do
         end
       end
 
-      context 'given invalid user credentials' do
+      context 'given INCORRECT user credentials' do
         it 'returns bad_request status' do
           application = Fabricate(:application)
 
           params = {
             grant_type: 'password',
             email: 'dev@nimblehq.co',
-            password: '12345678'
+            password: 'incorrect'
           }.merge(oauth_application_params(application))
 
           post :create, params: params
@@ -53,24 +53,34 @@ RSpec.describe API::V1::TokensController, type: :controller do
           expect(response).to have_http_status(:bad_request)
         end
 
-        it 'returns an empty response' do
+        it 'returns an error message' do
           application = Fabricate(:application)
 
           params = {
             grant_type: 'password',
             email: 'dev@nimblehq.co',
-            password: '12345678'
+            password: 'incorrect'
           }.merge(oauth_application_params(application))
 
           post :create, params: params
 
-          response_body = JSON.parse(response.body)
+          expected_response = {
+            errors: [
+              {
+                code: 'invalid_email_or_password',
+                detail: 'Your email or password is incorrect. Please try again.'
+              }
+            ]
+          }
+
+          response_body = JSON.parse(response.body, symbolize_names: true)
           expect(response_body).to match_json_schema('v1/tokens/create/invalid')
+          expect(response_body).to eq(expected_response)
         end
       end
     end
 
-    context 'given an invalid oauth application' do
+    context 'given an INVALID oauth application' do
       it 'returns unauthorized status' do
         Fabricate(:user, email: 'dev@nimblehq.co', password: '12345678')
 
@@ -100,10 +110,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
           errors: [
             {
               code: 'invalid_client',
-              detail: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.',
-              source: {
-                parameter: 'Doorkeeper::OAuth::Error'
-              }
+              detail: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.'
             }
           ]
         }
@@ -133,7 +140,7 @@ RSpec.describe API::V1::TokensController, type: :controller do
       end
     end
 
-    context 'given an invalid oauth application' do
+    context 'given an INVALID oauth application' do
       it 'returns forbidden status' do
         Fabricate(:access_token, token: 'access_token', application_id: Fabricate(:application).id)
 
