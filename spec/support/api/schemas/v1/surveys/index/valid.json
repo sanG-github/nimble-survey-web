@@ -107,8 +107,7 @@
         "required": [
           "id",
           "type",
-          "attributes",
-          "relationships"
+          "attributes"
         ]
       }
     },
