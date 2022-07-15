@@ -4,6 +4,11 @@
 
 ## Project Setup
 
+### Prerequisites
+
+[![ruby-version-image](https://img.shields.io/badge/ruby-2.7.1-brightgreen.svg)](https://www.ruby-lang.org/en/news/2020/03/31/ruby-2-7-1-released/)
+[![node-version-image](https://img.shields.io/badge/node-14.17.0-brightgreen.svg)](https://nodejs.org/download/release/v14.17.0/)
+
 ### Docker
 
 * Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
