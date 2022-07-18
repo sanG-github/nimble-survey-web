@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SurveyListSerializer < ApplicationSerializer
+class SurveySimpleSerializer < ApplicationSerializer
   attributes :title,
              :description,
              :thank_email_above_threshold,

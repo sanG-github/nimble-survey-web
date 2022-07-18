@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class SurveySerializer < SurveyListSerializer
+class SurveySerializer < SurveySimpleSerializer
   has_many :questions
 end
