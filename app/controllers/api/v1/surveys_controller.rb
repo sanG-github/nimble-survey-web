@@ -8,7 +8,7 @@ module API
       def index
         pagy, surveys = pagy_array(Survey.all, pagination_params)
 
-        render json: SurveySerializer.new(surveys, meta: meta_from_pagy(pagy))
+        render json: SurveySimpleSerializer.new(surveys, meta: meta_from_pagy(pagy))
       rescue Pagy::OverflowError
         render status: :not_found
       end
