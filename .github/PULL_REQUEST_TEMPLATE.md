@@ -1,11 +1,13 @@
-## What happened
-Describe the big picture of your changes here to communicate to the team why we should accept this pull request. 
+Resolves https://github.com/nimblehq/nimble-survey-web/issues/??
 
- 
-## Insight
-Describe in details how to test the changes. Referenced documentation are welcome as well.
- 
+## What happened 👀
 
-## Proof Of Work
-Show us the implementation: screenshots, gif, etc.
- 
+Provide a description of the **changes** this pull request brings to the codebase. Additionally, when the pull request is still being worked on, a checklist of the planned changes is welcome to track progress.
+
+## Insight 📝
+
+Describe in detail why this solution is the most appropriate, which solution you tried but did not go with, and how to test the changes. References to relevant documentation are welcome as well.
+
+## Proof Of Work 📹
+
+Show us the implementation: screenshots, GIFs, etc.
