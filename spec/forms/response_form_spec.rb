@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe ResponseForm do
   describe '#save' do
     context 'given valid attributes' do
-      context 'given a same questions order' do
+      context 'given a questions_ids param that has the same order as questions in DB' do
         it 'returns true' do
           questions_ids = [
             { id: '940d229e4cd87cd1e202' },
@@ -28,7 +28,7 @@ RSpec.describe ResponseForm do
         end
       end
 
-      context 'given a different questions order' do
+      context 'given a questions_ids param that has a different order as questions in DB' do
         it 'returns true' do
           questions_ids = [
             { id: 'c3a9b8ce5c2356010703' },
