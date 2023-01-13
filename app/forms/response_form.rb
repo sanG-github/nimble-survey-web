@@ -26,7 +26,7 @@ class ResponseForm < ApplicationForm
     survey_questions_ids = survey.questions.map(&:id)
     questions_ids = questions.pluck(:id)
 
-    return if (survey_questions_ids & questions_ids).difference(questions_ids).empty?
+    return if (survey_questions_ids & questions_ids).to_set == questions_ids.to_set
 
     errors.add(:questions, :invalid)
   end
