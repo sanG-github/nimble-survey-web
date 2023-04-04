@@ -3,8 +3,8 @@ name: Docker build test
 on:
   push:
     branches-ignore:
-      - master
-      - development
+      - main
+      - develop
 
 jobs:
   docker_production_test:
