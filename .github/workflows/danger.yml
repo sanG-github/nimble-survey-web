@@ -13,7 +13,7 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
         with:
           fetch-depth: 100
 
@@ -24,7 +24,7 @@ jobs:
           bundler-cache: true
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: "12"
 
@@ -33,7 +33,7 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache yarn packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -43,7 +43,7 @@ jobs:
 
       - name: Cache node_modules
         id: node-modules-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-nodemodules-${{ hashFiles('**/yarn.lock') }}
