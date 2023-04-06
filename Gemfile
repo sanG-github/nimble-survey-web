@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '3.2.2'
+ruby '3.0.6'
 
 # Backend
 gem 'rails', '7.0.4.3' # Latest stable

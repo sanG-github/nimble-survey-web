@@ -511,5 +511,5 @@ Doorkeeper::OAuth::ErrorResponse.send :prepend, Doorkeeper::CustomErrorResponse
 Doorkeeper::GrantFlow.register(
   :password,
   grant_type_matches: "password",
-  grant_type_strategy: Doorkeeper::Request::CustomPassword,
+  grant_type_strategy: Doorkeeper::Request::CustomPassword
 )
