@@ -33,7 +33,7 @@ Capybara.register_driver(:headless_chrome) do |app|
   options.add_argument('disable-gpu')
 
   # Run headless by default unless CHROME_HEADLESS specified
-  options.add_argument('headless') unless ENV['CHROME_HEADLESS'] =~ /^(false|no|0)$/i
+  options.add_argument('headless') unless ENV.fetch('CHROME_HEADLESS', nil) =~ /^(false|no|0)$/i
 
   # Disable /dev/shm use in CI
   options.add_argument('disable-dev-shm-usage') if ENV['CI']
@@ -41,7 +41,6 @@ Capybara.register_driver(:headless_chrome) do |app|
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
-    desired_capabilities: capabilities,
     options: options
   )
 end

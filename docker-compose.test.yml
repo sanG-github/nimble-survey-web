@@ -7,13 +7,13 @@ services:
     environment:
       - POSTGRES_DB=nimble_survey_web_test
     ports:
-      - "5432"
+      - "5433:5432"
 
   redis:
-    image: redis:5.0.7
-    container_name: nimble_survey_web_redis
+    image: redis:7.0
+    container_name: nimble_survey_web_redis_test
     ports:
-      - "6379"
+      - "6380:6379"
 
   test:
     build:
