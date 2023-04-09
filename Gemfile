@@ -12,7 +12,7 @@ gem 'ffaker' # A library for generating fake data such as names, addresses, and 
 gem 'fabrication' # Fabrication generates objects in Ruby. Fabricators are schematics for your objects, and can be created as needed anywhere in your app or specs.
 gem 'sidekiq' # background processing for Ruby
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
-gem 'i18n-js', '3.5.1' # A library to provide the I18n translations on the Javascript
+gem 'i18n-js' # A library to provide the I18n translations on the Javascript
 gem 'jsonapi-serializer' # A fast JSON:API serializer for Ruby
 gem 'rack-cors' # Provides support for CORS
 gem 'graphql' # Ruby implementation of GraphQL
@@ -23,7 +23,8 @@ gem 'pundit' # Minimal authorization through OO design and pure Ruby classes
 gem 'doorkeeper' # An OAuth 2 provider for Ruby on Rails
 
 # Assets
-gem 'webpacker', '~>5.2.0' # Transpile app-like JavaScript
+gem 'jsbundling-rails' # Use JSBundling for Rails
+gem "sprockets-rails" # Sprockets integration for Rails 4.0+
 gem 'inline_svg' # Use Inline SVG for styling SVG with CSS
 
 # Templating

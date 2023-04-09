@@ -7,7 +7,7 @@
 ### Prerequisites
 
 [![ruby-version-image](https://img.shields.io/badge/ruby-3.2.2-brightgreen.svg)](https://www.ruby-lang.org/en/news/2023/03/30/ruby-3-2-2-released/)
-[![node-version-image](https://img.shields.io/badge/node-14.17.0-brightgreen.svg)](https://nodejs.org/download/release/v14.17.0/)
+[![node-version-image](https://img.shields.io/badge/node-18.15.0-brightgreen.svg)](https://nodejs.org/download/release/v18.15.0/)
 [![Docker Desktop](https://img.shields.io/badge/docker-20.10.7-brightgreen.svg)](https://www.docker.com/products/docker-desktop/)
 
 ### Development

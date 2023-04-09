@@ -9,8 +9,8 @@ html lang=I18n.locale
     == csrf_meta_tags
     == csp_meta_tag
 
-    == javascript_pack_tag 'application'
-    == stylesheet_pack_tag 'application'
+    == javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true
+    / == stylesheet_pack_tag 'application'
 
   body
     == yield

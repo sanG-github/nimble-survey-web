@@ -1,4 +1,4 @@
-export_i18n_js: false
+export_i18n_js: true
 
 translations:
   - file: 'app/javascript/translations/translations.js'

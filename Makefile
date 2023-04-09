@@ -7,8 +7,11 @@ install-dependencies:
 	yarn install
 	gem install foreman
 
-env/setup:
+env/start:
 	./bin/envsetup.sh
+
+env/setup:
+	make env/start
 	rails db:setup
 	rails i18n:js:export
 
@@ -19,6 +22,7 @@ env/teardown:
 	./bin/envteardown.sh
 
 dev:
+	make env/start
 	./bin/dev.sh
 
 test:
