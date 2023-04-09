@@ -40,8 +40,10 @@ services:
       - RAILS_ENV=test
       - NODE_ENV=test
       - DB_HOST=db
+      - DB_PORT=5432
       - CI=$CI
       - TEST_RETRY=$TEST_RETRY
+      - REDIS_URL=redis://redis:6379
 
 volumes:
   ruby-bundle:
