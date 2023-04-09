@@ -12,6 +12,9 @@ env/setup:
 	rails db:setup
 	rails i18n:js:export
 
+env/stop:
+	./bin/envstop.sh
+
 env/teardown:
 	./bin/envteardown.sh
 
