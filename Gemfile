@@ -24,7 +24,7 @@ gem 'doorkeeper' # An OAuth 2 provider for Ruby on Rails
 
 # Assets
 gem 'jsbundling-rails' # Use JSBundling for Rails
-gem "sprockets-rails" # Sprockets integration for Rails 4.0+
+gem "sprockets-rails", require: 'sprockets/railtie' # Sprockets integration for Rails 4.0+
 gem 'inline_svg' # Use Inline SVG for styling SVG with CSS
 
 # Templating

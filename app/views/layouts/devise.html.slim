@@ -10,7 +10,7 @@ html.layout-devise lang=I18n.locale
     == csp_meta_tag
 
     == javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true
-    / == stylesheet_pack_tag 'application'
+    == stylesheet_link_tag 'application'
 
   body
     main.app-main
@@ -23,4 +23,4 @@ html.layout-devise lang=I18n.locale
         .app-main__content
           == yield
 
-    = inline_svg_tag 'media/images/icon-sprite.svg'
+    = inline_svg_tag 'icon-sprite.svg'
