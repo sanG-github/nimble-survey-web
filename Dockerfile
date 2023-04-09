@@ -91,7 +91,7 @@ RUN gem install bundler && \
     bundle install
 
 # Install JS dependencies
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarnrc ./
 RUN yarn install --network-timeout 100000 --production=false
 
 # Copying the app files must be placed after the dependencies setup
