@@ -1,9 +1,7 @@
 let environment = {
   plugins: [
-    require('postcss-import'),
     require('postcss-flexbugs-fixes'),
     require('tailwindcss'),
-    require('postcss-nested'),
     require('autoprefixer'),
     require('postcss-preset-env')({
       autoprefixer: {

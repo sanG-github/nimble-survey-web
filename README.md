@@ -81,13 +81,13 @@ docker-compose -f docker-compose.test.yml run test bin/bundle exec rake db:test:
 -   Run all tests:
 
 ```sh
-docker-compose -f docker-compose.test.yml run test
+make test
 ```
 
 -   Run a specific test:
 
 ```sh
-docker-compose -f docker-compose.test.yml run test bin/bundle exec spec [rspec-params]
+make test [rspec-params]
 ```
 
 ### Automated Code Review Setup

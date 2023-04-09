@@ -16,6 +16,7 @@ gem 'i18n-js' # A library to provide the I18n translations on the Javascript
 gem 'jsonapi-serializer' # A fast JSON:API serializer for Ruby
 gem 'rack-cors' # Provides support for CORS
 gem 'graphql' # Ruby implementation of GraphQL
+gem 'faraday-retry' # Faraday middleware for retrying failed requests
 
 # Authentications & Authorizations
 gem 'devise' # Authentication solution for Rails with Warden
@@ -56,7 +57,6 @@ group :development, :test do
   gem 'brakeman', require: false # A static analysis security vulnerability scanner for Ruby on Rails applications
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
-  gem 'scss_lint', require: false
 
   gem 'danger' # Automated code review.
   gem 'danger-brakeman_scanner' # Security static analysis scanner in danger

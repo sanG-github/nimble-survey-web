@@ -3,7 +3,7 @@ version: '3.2'
 services:
   db:
     image: postgres:12.1
-    container_name: nimble_survey_web_db
+    container_name: nimble_survey_web_db_test
     environment:
       - POSTGRES_DB=nimble_survey_web_test
     ports:
