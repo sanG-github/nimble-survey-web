@@ -1,6 +1,10 @@
 name: Test
 
-on: push
+on: pull_request
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
@@ -14,22 +18,17 @@ jobs:
     name: Build docker image
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel previous runs
-        uses: styfle/cancel-workflow-action@0.6.0
-        with:
-          access_token: ${{ github.token }}
-
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
 
       - name: Set BRANCH_TAG
-        uses: nimblehq/branch-tag-action@v1.2
+        uses: nimblehq/branch-tag-action@v1
 
       - name: Log in to Docker registry
         run: echo "$DOCKER_TOKEN" | docker login $DOCKER_REGISTRY --username=$DOCKER_USERNAME --password-stdin
 
       - name: Pull Docker image
-        if: env.BRANCH_TAG != 'latest' && env.BRANCH_TAG != 'development'
+        if: env.BRANCH_TAG != 'latest' && env.BRANCH_TAG != 'develop'
         run: docker-compose pull test || true
 
       - name: Build Docker image
@@ -44,10 +43,10 @@ jobs:
     needs: build
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
 
       - name: Set BRANCH_TAG
-        uses: nimblehq/branch-tag-action@v1.2
+        uses: nimblehq/branch-tag-action@v1
 
       - name: Log in to Docker registry
         run: echo "$DOCKER_TOKEN" | docker login $DOCKER_REGISTRY --username=$DOCKER_USERNAME --password-stdin
@@ -67,10 +66,10 @@ jobs:
     needs: build
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
 
       - name: Set BRANCH_TAG
-        uses: nimblehq/branch-tag-action@v1.2
+        uses: nimblehq/branch-tag-action@v1
 
       - name: Log in to Docker registry
         run: echo "$DOCKER_TOKEN" | docker login $DOCKER_REGISTRY --username=$DOCKER_USERNAME --password-stdin

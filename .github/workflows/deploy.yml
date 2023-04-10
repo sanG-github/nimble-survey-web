@@ -5,11 +5,15 @@ on:
     workflows:
       - Test
     branches:
-      - master
-      - development
+      - main
+      - develop
     types:
       - completed
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 env:
   DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
@@ -24,18 +28,13 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: Cancel previous runs
-        uses: styfle/cancel-workflow-action@0.6.0
-        with:
-          access_token: ${{ github.token }}
-
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.event.workflow_run.head_branch || github.ref }}
 
       - name: Set BRANCH_TAG
-        uses: nimblehq/branch-tag-action@v1.2
+        uses: nimblehq/branch-tag-action@v1
         with:
           ref: ${{ github.event.workflow_run.head_branch || github.ref }}
 
