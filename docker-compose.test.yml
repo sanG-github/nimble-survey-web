@@ -2,18 +2,19 @@ version: '3.2'
 
 services:
   db:
-    image: postgres:12.1
-    container_name: nimble_survey_web_db_test
+    image: postgres:15.2
+    container_name: nimble_survey_web_db
     environment:
       - POSTGRES_DB=nimble_survey_web_test
+      - POSTGRES_PASSWORD=postgres
     ports:
-      - "5433:5432"
+      - "5432"
 
   redis:
     image: redis:7.0
-    container_name: nimble_survey_web_redis_test
+    container_name: nimble_survey_web_db
     ports:
-      - "6380:6379"
+      - "6379"
 
   test:
     build:
@@ -40,10 +41,9 @@ services:
       - RAILS_ENV=test
       - NODE_ENV=test
       - DB_HOST=db
-      - DB_PORT=5432
       - CI=$CI
       - TEST_RETRY=$TEST_RETRY
-      - REDIS_URL=redis://redis:6379
+      - POSTGRES_HOST_AUTH_METHOD=trust
 
 volumes:
   ruby-bundle:

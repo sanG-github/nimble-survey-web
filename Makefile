@@ -26,6 +26,5 @@ dev:
 	./bin/dev.sh
 
 test:
-	docker-compose -f docker-compose.test.yml --project-name nimble-survey-web-test up -d db redis
+	make env/start
 	bundle exec rspec $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-	docker-compose -f docker-compose.test.yml --project-name nimble-survey-web-test down

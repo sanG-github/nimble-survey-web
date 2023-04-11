@@ -3,7 +3,6 @@ const path = require('path');
 require('esbuild')
   .context({
     entryPoints: ['application.js'],
-    inject: ['global.js'],
     bundle: true,
     sourcemap: true,
     outdir: path.join(process.cwd(), 'app/assets/builds'),

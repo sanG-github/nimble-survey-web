@@ -5,6 +5,7 @@ default: &default
   DB_HOST: "localhost"
   DB_PORT: "5432"
   DB_USERNAME: "postgres"
+  DB_PASSWORD: "postgres"
   MAILER_DEFAULT_HOST: "localhost"
   MAILER_DEFAULT_PORT: "3000"
   MAILER_SENDER: "Test <noreply@nimblehq.co>"
@@ -15,5 +16,3 @@ development:
 test:
   <<: *default
   TEST_RETRY: "0"
-  DB_PORT: "5433"
-  REDIS_URL: "redis://localhost:6380/0"
