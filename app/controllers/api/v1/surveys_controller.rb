@@ -27,7 +27,7 @@ module API
 
       def pagination_params
         {
-          page: params.dig(:page, :number) || Pagy::VARS[:page],
+          page: params.dig(:page, :number),
           items: params.dig(:page, :size)
         }
       end

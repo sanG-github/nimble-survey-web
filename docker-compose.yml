@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   db:
-    image: postgres:12.1
+    image: postgres:15.2
     container_name: nimble_survey_web_db
     environment:
       - POSTGRES_DB=nimble_survey_web_production
@@ -10,7 +10,7 @@ services:
       - "5432:5432"
 
   redis:
-    image: redis:5.0.7
+    image: redis:7.0
     container_name: nimble_survey_web_redis
     ports:
       - "6379:6379"

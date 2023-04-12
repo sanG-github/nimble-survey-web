@@ -14,13 +14,13 @@
 @import 'base/root';
 
 // Layouts
-@import 'layouts/devise.pcss';
+@import 'layouts/devise';
 
 // Components
 @import 'tailwindcss/components';
-@import 'components/btn.pcss';
-@import 'components/form.pcss';
-@import 'components/message.pcss';
+@import 'components/btn';
+@import 'components/form';
+@import 'components/message';
 
 // Utilities
 @import 'tailwindcss/utilities';

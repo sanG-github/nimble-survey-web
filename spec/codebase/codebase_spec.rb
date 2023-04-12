@@ -19,7 +19,11 @@ describe 'Codebase', codebase: true do
     end
   end
 
-  it 'does not offend scss-lint' do
-    expect(`scss-lint`).to be_empty
+  it 'does NOT offend stylelint' do
+    expect(`yarn run stylelint`).to include 'Done'
+  end
+
+  it 'does NOT offend eslint' do
+    expect(`yarn run eslint`).to include 'Done'
   end
 end
