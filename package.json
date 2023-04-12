@@ -2,26 +2,34 @@
   "name": "nimble_survey_web",
   "private": true,
   "scripts": {
-    "lint": "eslint . --color",
-    "lint:fix": "eslint . --color --fix"
+    "eslint": "eslint app/javascript --color",
+    "eslint:fix": "eslint app/javascript --color --fix",
+    "stylelint": "stylelint **/*.scss --color",
+    "stylelint:fix": "stylelint **/*.scss --color --fix",
+    "lint": "yarn eslint && yarn stylelint",
+    "build:js": "node app/javascript/build.js",
+    "build:sass": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --no-source-map --load-path=node_modules --load-path=app/assets/stylesheets",
+    "build:postcss": "postcss app/assets/builds/application.css --dir app/assets/builds",
+    "build:css": "yarn build:sass && yarn build:postcss",
+    "build": "yarn build:js && yarn build:css"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "2.3.0",
     "@nimblehq/eslint-config-nimble": "2.1.1",
+    "@nimblehq/stylelint-config-nimble": "1.0.2",
     "@rails/actioncable": "^6.0.3-2",
     "@rails/activestorage": "^6.0.3-2",
     "@rails/ujs": "^6.0.3-2",
-    "@rails/webpacker": "5.2.1",
     "core-js": "3",
+    "esbuild": "0.17.15",
     "i18n-js": "3.7.1",
-    "postcss-nested": "4.2.3",
+    "postcss": "8.4.21",
+    "postcss-cli": "10.1.0",
+    "postcss-flexbugs-fixes": "5.0.2",
+    "postcss-preset-env": "8.3.0",
+    "sass": "1.61.0",
+    "stylelint": "15.4.0",
     "tailwindcss": "1.6.0"
-  },
-  "devDependencies": {
-    "stylelint": "13.6.1",
-    "stylelint-config-standard": "20.0.0",
-    "stylelint-order": "4.1.0",
-    "webpack-dev-server": "3.11.0"
   },
   "version": "0.1.0"
 }

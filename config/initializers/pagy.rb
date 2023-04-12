@@ -2,4 +2,4 @@
 require 'pagy/extras/array'
 
 # Default items per page
-Pagy::VARS[:items] = 5
+Pagy::DEFAULT[:items] = 5

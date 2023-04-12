@@ -31,10 +31,12 @@
     &:-webkit-autofill:active,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:hover {
-      border-color: var(--color-input-webkit-box-shadow);
-      -webkit-box-shadow: 0 0 0 1000px var(--color-input-webkit-box-shadow) inset;
-      -webkit-text-fill-color: theme('colors.white.default');
       transition: background-color 5000s ease-in-out 0s;
+
+      border-color: var(--color-input-webkit-box-shadow);
+
+      box-shadow: 0 0 0 1000px var(--color-input-webkit-box-shadow) inset;
+      -webkit-text-fill-color: theme('colors.white.default');
     }
   }
 }

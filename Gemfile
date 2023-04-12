@@ -1,21 +1,22 @@
 source 'https://rubygems.org'
-ruby '2.7.1'
+ruby '3.0.6'
 
 # Backend
-gem 'rails', '6.0.3.2' # Latest stable
+gem 'rails', '7.0.4.3' # Latest stable
 gem 'pg' # Use Postgresql as database
 gem 'puma' # Use Puma as the app server
 gem 'mini_magick' # A ruby wrapper for ImageMagick or GraphicsMagick command line
 gem 'pagy' # A pagination gem that is very light and fast
-gem 'paranoia', '2.4.2' # Paranoia is a re-implementation of acts_as_paranoid for Rails 3 and Rails 4. Soft-deletion of records
+# gem 'paranoia', '2.4.2' # Paranoia is a re-implementation of acts_as_paranoid for Rails 3 and Rails 4. Soft-deletion of records
 gem 'ffaker' # A library for generating fake data such as names, addresses, and phone numbers.
 gem 'fabrication' # Fabrication generates objects in Ruby. Fabricators are schematics for your objects, and can be created as needed anywhere in your app or specs.
 gem 'sidekiq' # background processing for Ruby
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
-gem 'i18n-js', '3.5.1' # A library to provide the I18n translations on the Javascript
+gem 'i18n-js' # A library to provide the I18n translations on the Javascript
 gem 'jsonapi-serializer' # A fast JSON:API serializer for Ruby
 gem 'rack-cors' # Provides support for CORS
 gem 'graphql' # Ruby implementation of GraphQL
+gem 'faraday-retry' # Faraday middleware for retrying failed requests
 
 # Authentications & Authorizations
 gem 'devise' # Authentication solution for Rails with Warden
@@ -23,7 +24,8 @@ gem 'pundit' # Minimal authorization through OO design and pure Ruby classes
 gem 'doorkeeper' # An OAuth 2 provider for Ruby on Rails
 
 # Assets
-gem 'webpacker', '~>5.2.0' # Transpile app-like JavaScript
+gem 'jsbundling-rails' # Use JSBundling for Rails
+gem "sprockets-rails", require: 'sprockets/railtie' # Sprockets integration for Rails 4.0+
 gem 'inline_svg' # Use Inline SVG for styling SVG with CSS
 
 # Templating
@@ -50,12 +52,11 @@ group :development, :test do
   gem 'figaro' # Simple Rails app configuration
   gem 'pry-rails' # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug' # Step by step debugging and stack navigation in Pry
-  gem 'listen', '3.1.5' # Listens to file modifications
+  gem 'listen' # Listens to file modifications
   gem 'letter_opener' # Preview mail in the browser instead of sending.
   gem 'brakeman', require: false # A static analysis security vulnerability scanner for Ruby on Rails applications
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
-  gem 'scss_lint', require: false
 
   gem 'danger' # Automated code review.
   gem 'danger-brakeman_scanner' # Security static analysis scanner in danger

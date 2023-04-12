@@ -5,25 +5,50 @@ require 'rails_helper'
 RSpec.describe ResponseForm do
   describe '#save' do
     context 'given valid attributes' do
-      it 'returns true' do
-        questions_ids = [
-          { id: '940d229e4cd87cd1e202' },
-          { id: 'c3a9b8ce5c2356010703' }
-        ]
-        form = described_class.new(survey_id: 'd5de6a8f8f5f1cfe51bc', questions: questions_ids)
+      context 'given a questions_ids param that has the same order as questions in DB' do
+        it 'returns true' do
+          questions_ids = [
+            { id: '940d229e4cd87cd1e202' },
+            { id: 'c3a9b8ce5c2356010703' }
+          ]
+          form = described_class.new(survey_id: 'd5de6a8f8f5f1cfe51bc', questions: questions_ids)
 
-        expect(form.save).to eq(true)
+          expect(form.save).to eq(true)
+        end
+
+        it 'does NOT have errors' do
+          questions_ids = [
+            { id: '940d229e4cd87cd1e202' },
+            { id: 'c3a9b8ce5c2356010703' }
+          ]
+          form = described_class.new(survey_id: 'd5de6a8f8f5f1cfe51bc', questions: questions_ids)
+          form.save
+
+          expect(form.errors).to be_empty
+        end
       end
 
-      it 'does NOT have errors' do
-        questions_ids = [
-          { id: '940d229e4cd87cd1e202' },
-          { id: 'c3a9b8ce5c2356010703' }
-        ]
-        form = described_class.new(survey_id: 'd5de6a8f8f5f1cfe51bc', questions: questions_ids)
-        form.save
+      context 'given a questions_ids param that has a different order as questions in DB' do
+        it 'returns true' do
+          questions_ids = [
+            { id: 'c3a9b8ce5c2356010703' },
+            { id: '940d229e4cd87cd1e202' }
+          ]
+          form = described_class.new(survey_id: 'd5de6a8f8f5f1cfe51bc', questions: questions_ids)
 
-        expect(form.errors).to be_empty
+          expect(form.save).to eq(true)
+        end
+
+        it 'does NOT have errors' do
+          questions_ids = [
+            { id: 'c3a9b8ce5c2356010703' },
+            { id: '940d229e4cd87cd1e202' }
+          ]
+          form = described_class.new(survey_id: 'd5de6a8f8f5f1cfe51bc', questions: questions_ids)
+          form.save
+
+          expect(form.errors).to be_empty
+        end
       end
     end
 

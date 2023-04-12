@@ -26,7 +26,7 @@ class ResponseForm < ApplicationForm
     survey_questions_ids = survey.questions.map(&:id)
     questions_ids = questions.pluck(:id)
 
-    return if (survey_questions_ids & questions_ids) == questions_ids
+    return if (questions_ids & survey_questions_ids) == questions_ids
 
     errors.add(:questions, :invalid)
   end
