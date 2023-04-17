@@ -1,0 +1,79 @@
+summary: |-
+  Request access token
+
+description: |-
+  Request an Access Token using either a client-side obtained OAuth 2.0
+  authorization code or a server-side JWT assertion.
+
+  An Access Token is a string that enables Box to verify that a
+  request belongs to an authorized session. In the normal order of
+  operations you will begin by requesting authentication from the
+  [authorize](#get-authorize) endpoint and Box will send you an
+  authorization code.
+
+  You will then send this code to this endpoint to exchange it for
+  an Access Token. The returned Access Token can then be used to to make
+  Box API calls.
+
+tags:
+  - Authorization
+
+post:
+  tags:
+    - Authentication
+  summary: Get access token
+  description: Get access token
+  requestBody:
+    required:
+      - grant_type
+      - email
+      - password
+      - client_id
+      - client_secret
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            grant_type:
+              type: string
+              description: The grant type
+            email:
+              type: string
+              description: The email
+            password:
+              type: string
+              description: The password
+            client_id:
+              type: string
+              description: The client ID
+            client_secret:
+              type: string
+              description: The client secret
+
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            # TODO: Reference to the predefined schema
+            type: object
+            description: A request for a new OAuth 2.0 token
+            properties:
+              access_token:
+                type: string
+                description: The access token
+              token_type:
+                type: string
+                description: The token type
+              expires_in:
+                type: integer
+                description: The token expiry time in seconds
+              refresh_token:
+                type: string
+                description: The refresh token
+              created_at:
+                type: integer
+                description: The token creation time in seconds
+
