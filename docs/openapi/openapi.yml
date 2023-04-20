@@ -33,9 +33,20 @@ components:
             write: Grants write access
             admin: Grants read and write access to administrative information
   schemas:
+    #### REQUESTS ####
+    requests_oauth_post_login_email:
+      $ref: "requests/oauth/post_login_email.yml"
+
+    #### RESPONSES ####
+    responses_oauth_post_login_email:
+      $ref: "responses/oauth/post_login_email.yml"
+
+    #### REUSABLE SCHEMAS ####
     token:
       $ref: "schemas/token.yml"
+    survey:
+      $ref: "schemas/survey.yml"
 
 paths:
   /oauth/token:
-    $ref: "resources/oauth/token.yml"
+    $ref: "paths/oauth/post_login_email.yml"
