@@ -6,14 +6,14 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://localhost:3000/api/v1
-    description: Local server
-
-  - url: https://survey-api-staging.nimblehq.co/api/v1
-    description: Staging server
-
-  - url: https://survey-api.nimblehq.co/api/v1
-    description: Production server
+  - url: https://{base_url}/api/v1
+    variables:
+      base_url:
+        default: survey-api.nimblehq.co     # Production server
+        enum:
+          - localhost:3000                  # Development server
+          - survey-api-staging.nimblehq.co  # Staging server
+          - survey-api.nimblehq.co          # Production server
 
 security:
   - bearerAuth: []
@@ -32,20 +32,6 @@ components:
             read: Grants read access
             write: Grants write access
             admin: Grants read and write access to administrative information
-  schemas:
-    #### REQUESTS ####
-    requests_oauth_post_login_email:
-      $ref: "requests/oauth/post_login_email.yml"
-
-    #### RESPONSES ####
-    responses_oauth_post_login_email:
-      $ref: "responses/oauth/post_login_email.yml"
-
-    #### REUSABLE SCHEMAS ####
-    token:
-      $ref: "schemas/token.yml"
-    survey:
-      $ref: "schemas/survey.yml"
 
 paths:
   /oauth/token:

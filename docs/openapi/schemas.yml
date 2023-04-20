@@ -1,0 +1,21 @@
+---
+#### REQUESTS ####
+
+requests_oauth_post_login_email:
+  $ref: "schemas/requests/oauth/post_login_email.yml"
+
+#### RESPONSES ####
+
+responses_oauth_post_login_email:
+  $ref: "schemas/responses/oauth/post_login_email.yml"
+
+#### REUSABLE SCHEMAS ####
+
+error:
+  $ref: "schemas/shared/error.yml"
+
+token:
+  $ref: "schemas/shared/token.yml"
+
+survey:
+  $ref: "schemas/shared/survey.yml"

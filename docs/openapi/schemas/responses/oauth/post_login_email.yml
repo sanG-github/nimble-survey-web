@@ -1,3 +1,4 @@
+---
 type: object
 
 description: |-
@@ -17,4 +18,4 @@ properties:
         example: 'token'
         description: The type of the access token
       attributes:
-        $ref: '../../openapi.yml#/components/schemas/token'
+        $ref: '../../../schemas.yml#/token'

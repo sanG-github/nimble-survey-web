@@ -1,0 +1,16 @@
+type: object
+
+properties:
+  errors:
+    type: array
+    items:
+      type: object
+      properties:
+        code:
+          type: string
+          description: an application-specific error code
+          example: invalid_email_or_password
+        detail:
+          type: string
+          description: 'a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized.'
+          example: Your email or password is incorrect. Please try again.
