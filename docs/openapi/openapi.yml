@@ -33,9 +33,9 @@ components:
             write: Grants write access
             admin: Grants read and write access to administrative information
   schemas:
-    Token:
-      $ref: "../schemas/token.yml"
+    token:
+      $ref: "schemas/token.yml"
 
 paths:
   /oauth/token:
-    $ref: "../resources/oauth/token.yml"
+    $ref: "resources/oauth/token.yml"

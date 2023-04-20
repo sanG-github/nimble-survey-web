@@ -29,7 +29,7 @@ services:
     volumes:
       - ./docs:/docs
     environment:
-      - SWAGGER_JSON=/docs/oapi.yml
+      - SWAGGER_JSON=/docs/openapi/openapi.yml
 
 volumes:
   postgres_data:
