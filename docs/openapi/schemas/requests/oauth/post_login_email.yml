@@ -4,10 +4,16 @@ type: object
 description: |-
   A request body for a new OAuth 2.0 token
 
+required:
+  - grant_type
+  - email
+  - password
+  - client_id
+  - client_secret
+
 properties:
   grant_type:
     type: string
-    required: true
     example: password
     description: |-
       The type of request being made, either using a client-side obtained
@@ -15,7 +21,6 @@ properties:
       grant or another access token for the purpose of downscoping a token. In this API, please use `password`
   email:
     type: string
-    required: true
     description: |-
       The email of the user requesting an access token.
 
@@ -23,7 +28,6 @@ properties:
     example: dev@example.com
   password:
     type: string
-    required: true
     description: |-
       The password of the user requesting an access token.
 
@@ -31,7 +35,6 @@ properties:
     example: password
   client_id:
     type: string
-    required: true
     description: |-
       The Client ID of the application requesting an access token.
 
@@ -39,7 +42,6 @@ properties:
     example: ly1nj6n11vionaie65emwzk575hnnmrk
   client_secret:
     type: string
-    required: true
     description: |-
       The client secret of the application requesting an access token.
 
