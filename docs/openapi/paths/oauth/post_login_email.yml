@@ -2,7 +2,7 @@
 post:
   tags:
     - Authentication
-  security: []   
+  security: []
   summary: Login with email
   description: |-
     Request an Access Token using either a client-side obtained OAuth 2.0
