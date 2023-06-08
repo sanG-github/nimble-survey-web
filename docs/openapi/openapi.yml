@@ -6,14 +6,16 @@ info:
   version: 1.0.0
 
 servers:
-  - url: https://{base_url}/api/v1
+  - url: '{base_url}'
     variables:
       base_url:
         default: survey-api.nimblehq.co     # Production server
         enum:
-          - localhost:3000                  # Development server
-          - survey-api-staging.nimblehq.co  # Staging server
-          - survey-api.nimblehq.co          # Production server
+          - http://localhost:3000                       # Development server
+          - http://localhost:4010                       # Mock Development server
+          - https://survey-api-staging.nimblehq.co      # Staging server
+          - https://survey-api-staging.nimblehq.co:4010 # Mock Staging server
+          - https://survey-api.nimblehq.co              # Production server
 
 security:
   - bearerAuth: []
@@ -25,5 +27,5 @@ components:
       scheme: bearer
 
 paths:
-  /oauth/token:
+  /api/v1/oauth/token:
     $ref: "paths/oauth/post_login_email.yml"
