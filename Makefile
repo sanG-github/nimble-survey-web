@@ -21,10 +21,15 @@ env/stop:
 env/teardown:
 	./bin/envteardown.sh
 
+doc/generate:
+	yarn run build:docs
+
 dev:
+	make doc/generate
 	make env/start
 	./bin/dev.sh
 
 test:
+	make doc/generate
 	make env/start
 	bundle exec rspec $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))

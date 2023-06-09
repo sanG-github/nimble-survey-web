@@ -36,4 +36,6 @@ Rails.application.routes.draw do
       resource :users, only: :show, path: :me
     end
   end
+
+  get '/openapi', to: 'openapi#show'
 end
