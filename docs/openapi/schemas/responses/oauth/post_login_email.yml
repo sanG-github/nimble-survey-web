@@ -15,7 +15,7 @@ properties:
         example: "123"
       type:
         type: string
-        example: 'token'
         description: The type of the access token
+        example: 'token'
       attributes:
         $ref: '../../../schemas.yml#/token'

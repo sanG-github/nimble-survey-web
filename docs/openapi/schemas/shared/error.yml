@@ -3,6 +3,7 @@ type: object
 properties:
   errors:
     type: array
+    maxItems: 10
     items:
       type: object
       properties:

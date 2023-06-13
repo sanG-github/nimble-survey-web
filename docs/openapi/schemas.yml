@@ -9,6 +9,9 @@ requests_oauth_post_login_email:
 responses_oauth_post_login_email:
   $ref: "schemas/responses/oauth/post_login_email.yml"
 
+responses_surveys_get_survey_list:
+  $ref: "schemas/responses/surveys/get_survey_list.yml"
+
 #### REUSABLE SCHEMAS ####
 
 error:
