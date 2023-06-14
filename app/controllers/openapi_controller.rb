@@ -2,6 +2,6 @@
 
 class OpenapiController < ApplicationController
   def show
-    render template: 'openapi/swagger'
+    render 'openapi/swagger'
   end
 end
