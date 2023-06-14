@@ -6,16 +6,10 @@ info:
   version: 1.0.0
 
 servers:
-  - url: '{base_url}'
-    variables:
-      base_url:
-        default: survey-api.nimblehq.co     # Production server
-        enum:
-          - http://localhost:3000                       # Development server
-          - http://localhost:4010                       # Mock Development server
-          - https://survey-api-staging.nimblehq.co      # Staging server
-          - https://survey-api-staging.nimblehq.co:4010 # Mock Staging server
-          - https://survey-api.nimblehq.co              # Production server
+  - url: https://survey-api-staging.nimblehq.co
+    description: Staging server
+  - url: https://survey-api.nimblehq.co
+    description: Production server
 
 security:
   - bearerAuth: []
