@@ -29,13 +29,5 @@ module NimbleSurveyWeb
 
     # Automatically generate the `translation.js` files
     config.middleware.use I18n::JS::Middleware
-
-    # Use Rack::Cors to allow cross-origin requests in OpenAPI Swagger UI.
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', headers: :any, methods: :any
-      end
-    end
   end
 end

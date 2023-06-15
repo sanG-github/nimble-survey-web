@@ -12,6 +12,7 @@ env/start:
 
 env/setup:
 	make env/start
+	make doc/generate
 	rails db:setup
 	rails i18n:js:export
 
@@ -25,11 +26,9 @@ doc/generate:
 	yarn run build:docs
 
 dev:
-	make doc/generate
 	make env/start
 	./bin/dev.sh
 
 test:
-	make doc/generate
 	make env/start
 	bundle exec rspec $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
