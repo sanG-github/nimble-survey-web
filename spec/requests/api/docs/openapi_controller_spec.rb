@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe OpenapiController, type: :request do
+RSpec.describe API::Docs::OpenapiController, type: :request do
   describe 'GET#show' do
     context 'given an request' do
       it 'returns success status' do
