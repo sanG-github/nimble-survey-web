@@ -28,3 +28,9 @@ paths:
 
   /surveys:
     $ref: "paths/surveys/get_survey_list.yml"
+
+tags:
+  - name: Authentication
+    description: Authentication APIs
+  - name: Surveys
+    description: Survey APIs

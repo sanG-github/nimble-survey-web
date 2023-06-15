@@ -19,7 +19,7 @@ post:
           $ref: '../../schemas.yml#/requests_oauth_post_login_email'
 
   responses:
-    200:
+    '200':
       description: OK
       content:
         application/json:

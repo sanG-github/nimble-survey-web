@@ -7,6 +7,8 @@
     "stylelint": "stylelint **/*.scss --color",
     "stylelint:fix": "stylelint **/*.scss --color --fix",
     "lint": "yarn eslint && yarn stylelint",
+    "lint:docs:dev": "yamllint 'docs/**/*.yml' && spectral lint docs/openapi/openapi.yml -F error",
+    "lint:docs:public": "yamllint public/openapi.yml && spectral lint public/openapi.yml -F error",
     "build:js": "node app/javascript/build.js",
     "build:sass": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --no-source-map --load-path=node_modules --load-path=app/assets/stylesheets",
     "build:postcss": "postcss app/assets/builds/application.css --dir app/assets/builds",
@@ -22,6 +24,7 @@
     "@rails/actioncable": "^6.0.3-2",
     "@rails/activestorage": "^6.0.3-2",
     "@rails/ujs": "^6.0.3-2",
+    "@stoplight/spectral-cli": "6.8.0",
     "core-js": "3",
     "esbuild": "0.17.15",
     "i18n-js": "3.7.1",
@@ -31,7 +34,8 @@
     "postcss-preset-env": "8.3.0",
     "sass": "1.61.0",
     "stylelint": "15.4.0",
-    "tailwindcss": "1.6.0"
+    "tailwindcss": "1.6.0",
+    "yaml-lint": "1.7.0"
   },
   "version": "0.1.0"
 }
