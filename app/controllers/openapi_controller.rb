@@ -2,6 +2,6 @@
 
 class OpenapiController < ApplicationController
   def show
-    render 'openapi/swagger'
+    render 'openapi/show'
   end
 end
