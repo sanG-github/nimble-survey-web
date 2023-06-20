@@ -1,0 +1,29 @@
+---
+openapi: 3.0.0
+info:
+  title: Nimble Survey API Documentation
+  description: This is the API documentation for Nimble Survey
+  version: 1.0.0
+
+servers:
+  - url: https://{base_url}/api/v1
+    variables:
+      base_url:
+        default: survey-api.nimblehq.co     # Production server
+        enum:
+          - localhost:3000                  # Development server
+          - survey-api-staging.nimblehq.co  # Staging server
+          - survey-api.nimblehq.co          # Production server
+
+security:
+  - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /oauth/token:
+    $ref: "paths/oauth/post_login_email.yml"

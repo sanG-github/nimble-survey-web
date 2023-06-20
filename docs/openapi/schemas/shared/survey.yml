@@ -1,0 +1,21 @@
+---
+type: object
+properties:
+  title:
+    type: string
+    description: The survey title
+  description:
+    type: string
+    description: The survey description
+  thank_email_above_threshold:
+    type: string
+    description: The survey thank email above threshold
+  thank_email_below_threshold:
+    type: string
+    description: The survey thank email below threshold
+  created_at:
+    type: string
+    description: The survey creation time
+  updated_at:
+    type: string
+    description: The survey last update time
