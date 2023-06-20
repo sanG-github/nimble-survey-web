@@ -6,9 +6,9 @@ info:
   version: 1.0.0
 
 servers:
-  - url: https://survey-api-staging.nimblehq.co
+  - url: https://survey-api-staging.nimblehq.co/api/v1
     description: Staging server
-  - url: https://survey-api.nimblehq.co
+  - url: https://survey-api.nimblehq.co/api/v1
     description: Production server
 
 security:
@@ -21,5 +21,5 @@ components:
       scheme: bearer
 
 paths:
-  /api/v1/oauth/token:
+  /oauth/token:
     $ref: "paths/oauth/post_login_email.yml"
