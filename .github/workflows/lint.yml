@@ -24,5 +24,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Generate API docs
+        run: yarn build:docs
+
       - name: Run API docs linters
         run: yarn lint:docs:public
