@@ -12,14 +12,19 @@ servers:
     description: Production server
 
 security:
-  - bearerAuth: []
+  - BearerAuth: []
 
 components:
   securitySchemes:
-    bearerAuth:
+    BearerAuth:
       type: http
       scheme: bearer
+  schemas:
+    $ref: "schemas.yml"
 
 paths:
   /oauth/token:
     $ref: "paths/oauth/post_login_email.yml"
+
+  /surveys:
+    $ref: "paths/surveys/get_survey_list.yml"
