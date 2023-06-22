@@ -21,16 +21,6 @@ services:
     volumes:
       - redis_data:/data
 
-  swagger:
-    image: swaggerapi/swagger-ui
-    container_name: nimble_survey_web_swagger
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./docs:/docs
-    environment:
-      - SWAGGER_JSON=/docs/openapi/openapi.yml
-
   prism:
     image: stoplight/prism:4
     container_name: nimble_survey_web_prism
