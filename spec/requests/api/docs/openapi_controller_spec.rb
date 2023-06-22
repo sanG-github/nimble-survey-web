@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe API::Docs::OpenapiController, type: :request do
   describe 'GET#show' do
-    context 'given an request' do
+    context 'given a request' do
       it 'returns success status' do
         get :show
 

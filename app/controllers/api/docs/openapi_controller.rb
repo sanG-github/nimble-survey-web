@@ -4,7 +4,7 @@ module API
   module Docs
     class OpenapiController < ApplicationController
       def show
-        render 'show'
+        render :show
       end
     end
   end
