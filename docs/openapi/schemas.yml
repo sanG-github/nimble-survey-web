@@ -4,13 +4,16 @@
 requests_oauth_post_login_email:
   $ref: "schemas/requests/oauth/post_login_email.yml"
 
+requests_oauth_post_refresh_token:
+  $ref: "schemas/requests/oauth/post_refresh_token.yml"
+
 requests_registrations_post_create:
   $ref: "schemas/requests/registrations/post_create.yml"
 
 #### RESPONSES ####
 
-responses_oauth_post_login_email:
-  $ref: "schemas/responses/oauth/post_login_email.yml"
+responses_oauth_post_token:
+  $ref: "schemas/responses/oauth/post_token.yml"
 
 responses_surveys_get_survey_list:
   $ref: "schemas/responses/surveys/get_survey_list.yml"

@@ -13,10 +13,16 @@ post:
     Survey API calls.
   requestBody:
     required: true
+    description: |-
+      A request body for request a new OAuth 2.0 Token.
+
+      Depend on the grant_type (`password`, `refresh_token`) you will need to use different attributes.
     content:
       application/json:
         schema:
-          $ref: '../../schemas.yml#/requests_oauth_post_login_email'
+          oneOf:
+            - $ref: '../../schemas.yml#/requests_oauth_post_login_email'
+            - $ref: '../../schemas.yml#/requests_oauth_post_refresh_token'
 
   responses:
     '200':
@@ -24,7 +30,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../schemas.yml#/responses_oauth_post_login_email'
+            $ref: '../../schemas.yml#/responses_oauth_post_token'
 
     default:
       description: Error
