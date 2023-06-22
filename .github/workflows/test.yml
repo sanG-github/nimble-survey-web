@@ -37,6 +37,26 @@ jobs:
           docker-compose build
           docker-compose push test
 
+  docs_lint:
+    name: Run lint for API docs
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set BRANCH_TAG
+        uses: nimblehq/branch-tag-action@v1
+
+      - name: Log in to Docker registry
+        run: echo "$DOCKER_TOKEN" | docker login $DOCKER_REGISTRY --username=$DOCKER_USERNAME --password-stdin
+
+      - name: Pull Docker image
+        run: docker-compose pull
+
+      - name: Run API docs linters
+        run: docker-compose run test yarn lint:docs:public
+
   unit_test:
     name: Run unit test
     runs-on: ubuntu-latest
@@ -54,11 +74,8 @@ jobs:
       - name: Pull Docker image
         run: docker-compose pull
 
-      - name: Run code linters
+      - name: Run linters
         run: docker-compose run test yarn lint
-
-      - name: Run API docs linters
-        run: docker-compose run test yarn lint:docs:public
 
       - name: Run rspec
         run: docker-compose run test bundle exec rspec --exclude-pattern "spec/systems/**/*_spec.rb" --profile
