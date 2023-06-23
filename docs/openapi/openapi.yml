@@ -21,6 +21,8 @@ components:
       scheme: bearer
   schemas:
     $ref: "schemas.yml"
+  responses:
+    $ref: "responses.yml"
 
 paths:
   /registrations:
@@ -28,6 +30,9 @@ paths:
 
   /oauth/token:
     $ref: "paths/oauth/post_token.yml"
+
+  /oauth/revoke:
+    $ref: "paths/oauth/post_revoke.yml"
 
   /surveys:
     $ref: "paths/surveys/get_survey_list.yml"
