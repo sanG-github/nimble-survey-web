@@ -13,7 +13,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../schemas.yml#/requests_registrations_post_create'
+          $ref: '../schemas.yml#/requests_registrations'
 
   responses:
     '201':

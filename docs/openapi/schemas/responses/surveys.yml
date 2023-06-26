@@ -17,7 +17,7 @@ properties:
         type:
           type: string
         attributes:
-          $ref: '../../../schemas.yml#/survey'
+          $ref: '../../schemas.yml#/survey'
   meta:
     type: object
     properties:

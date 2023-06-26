@@ -26,7 +26,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../schemas.yml#/responses_surveys_get_survey_list'
+            $ref: '../schemas.yml#/responses_surveys'
           examples:
             $ref: '../examples/surveys.json'
 
