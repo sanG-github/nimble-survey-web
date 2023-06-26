@@ -1,11 +1,11 @@
 ---
 #### REQUESTS ####
 
-requests_oauth_token_password:
-  $ref: "schemas/requests/oauth/token_password.yml"
+requests_oauth_token_post_password:
+  $ref: "schemas/requests/oauth/token/post_password.yml"
 
-requests_oauth_token_refresh_token:
-  $ref: "schemas/requests/oauth/token_refresh_token.yml"
+requests_oauth_token_post_refresh_token:
+  $ref: "schemas/requests/oauth/token/post_refresh_token.yml"
 
 requests_oauth_revoke:
   $ref: "schemas/requests/oauth/revoke.yml"

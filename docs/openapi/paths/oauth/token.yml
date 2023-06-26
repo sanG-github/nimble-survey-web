@@ -20,8 +20,8 @@ post:
       application/json:
         schema:
           oneOf:
-            - $ref: '../../schemas.yml#/requests_oauth_token_password'
-            - $ref: '../../schemas.yml#/requests_oauth_token_refresh_token'
+            - $ref: '../../schemas.yml#/requests_oauth_token_post_password'
+            - $ref: '../../schemas.yml#/requests_oauth_token_post_refresh_token'
 
   responses:
     '200':
