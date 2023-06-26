@@ -23,6 +23,9 @@ components:
     $ref: "schemas.yml"
 
 paths:
+  /registrations:
+    $ref: "paths/registrations/post_create.yml"
+
   /oauth/token:
     $ref: "paths/oauth/post_login_email.yml"
 

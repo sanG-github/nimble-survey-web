@@ -4,6 +4,9 @@
 requests_oauth_post_login_email:
   $ref: "schemas/requests/oauth/post_login_email.yml"
 
+requests_registrations_post_create:
+  $ref: "schemas/requests/registrations/post_create.yml"
+
 #### RESPONSES ####
 
 responses_oauth_post_login_email:
