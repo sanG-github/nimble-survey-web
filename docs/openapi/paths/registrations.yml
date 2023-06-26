@@ -1,7 +1,7 @@
 ---
 post:
   tags:
-    - Authentication
+    - Account
   security: []
   summary: Register with email
   description: |-
