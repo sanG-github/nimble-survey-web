@@ -21,7 +21,7 @@ get:
       example: 10
 
   responses:
-    200:
+    '200':
       description: OK
       content:
         application/json:
