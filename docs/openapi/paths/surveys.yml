@@ -26,9 +26,9 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../schemas.yml#/responses_surveys_get_survey_list'
+            $ref: '../schemas.yml#/responses_surveys_get_survey_list'
           examples:
-            $ref: 'get_survey_list_examples.json'
+            $ref: '../examples/surveys.json'
 
     default:
-      $ref: '../../responses.yml#/responses_default_error'
+      $ref: '../responses.yml#/responses_default_error'
