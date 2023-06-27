@@ -714,15 +714,7 @@
     simple-eval "1.0.0"
     tslib "^2.3.0"
 
-"@stoplight/spectral-documentation@1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@stoplight/spectral-documentation/-/spectral-documentation-1.3.1.tgz#8b012287b320d2421c04d36b246453b8500c1c5f"
-  integrity sha512-NRt7gB2WjZQqcKxwR5eZgrYSZVZFNx6w+xPerigyJzUyYdTtPt2t5wKTDY3CGueYJJChaPAZr+v5wRLGiOTugA==
-  dependencies:
-    "@stoplight/spectral-formats" "^1.2.0"
-    "@stoplight/spectral-functions" "^1.7.2"
-
-"@stoplight/spectral-formats@>=1", "@stoplight/spectral-formats@^1.0.0", "@stoplight/spectral-formats@^1.2.0", "@stoplight/spectral-formats@^1.5.0":
+"@stoplight/spectral-formats@>=1", "@stoplight/spectral-formats@^1.0.0", "@stoplight/spectral-formats@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@stoplight/spectral-formats/-/spectral-formats-1.5.0.tgz#222dd1e1302c54ba3219b8223b299d9515fed3e3"
   integrity sha512-VskkdU3qBSvI1dfJ79ysjvTssfNlbA6wrf/XkXK6iTyjfIVqOAWVtjypTb2U95tN/X8IjIBBhNWtZ4tNVZilrA==
@@ -748,7 +740,7 @@
     text-table "^0.2.0"
     tslib "^2.5.0"
 
-"@stoplight/spectral-functions@>=1", "@stoplight/spectral-functions@^1.0.0", "@stoplight/spectral-functions@^1.5.1", "@stoplight/spectral-functions@^1.7.2":
+"@stoplight/spectral-functions@>=1", "@stoplight/spectral-functions@^1.0.0", "@stoplight/spectral-functions@^1.5.1":
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/@stoplight/spectral-functions/-/spectral-functions-1.7.2.tgz#96ddc5dc2b093fba41a902a0ef374300f861f58f"
   integrity sha512-f+61/FtIkQeIo+a269CeaeqjpyRsgDyIk6DGr7iS4hyuk1PPk7Uf6MNRDs9FEIBh7CpdEJ+HSHbMLwgpymWTIw==

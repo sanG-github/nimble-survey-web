@@ -37,6 +37,9 @@ paths:
   /surveys:
     $ref: "paths/surveys.yml"
 
+  /surveys/{id}:
+    $ref: "paths/surveys_id.yml"
+
 tags:
   - name: Authentication
     description: Authentication APIs
