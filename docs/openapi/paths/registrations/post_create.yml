@@ -20,12 +20,4 @@ post:
       description: Created
 
     default:
-      description: Error
-      content:
-        application/json:
-          example:
-            errors:
-              - code: 'invalid_request'
-                detail: 'The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.'
-          schema:
-            $ref: '../../schemas.yml#/error'
+      $ref: '../../responses.yml#/responses_default_error'
