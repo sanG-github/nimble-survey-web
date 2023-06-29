@@ -46,6 +46,9 @@ paths:
   /responses:
     $ref: "paths/responses.yml"
 
+  /me:
+    $ref: "paths/me.yml"
+
 tags:
   - name: Authentication
     description: Authentication APIs
@@ -53,3 +56,5 @@ tags:
     description: Account APIs
   - name: Surveys
     description: Survey APIs
+  - name: User
+    description: User APIs
