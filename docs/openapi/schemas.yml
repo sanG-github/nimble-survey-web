@@ -30,6 +30,9 @@ responses_surveys:
 responses_surveys_id:
   $ref: "schemas/responses/surveys_id.yml"
 
+responses_me:
+  $ref: "schemas/responses/me.yml"
+
 #### REUSABLE SCHEMAS ####
 
 error:
