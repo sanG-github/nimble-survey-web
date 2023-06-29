@@ -1,4 +1,10 @@
 ---
+summary: Respresent a survey
+
+description: |-
+  This resource represents a survey.
+  Each survey is indentified by a unique id.
+
 get:
   tags:
     - Surveys
@@ -6,6 +12,14 @@ get:
     - BearerAuth: []
   summary: Get the survey detail
   description: Call this API to get the data of a survey by id
+  parameters:
+    - name: id
+      in: path
+      description: The id of the survey
+      required: true
+      schema:
+        type: string
+        example: 3ffc938a273e45b27109
   responses:
     '200':
       description: OK

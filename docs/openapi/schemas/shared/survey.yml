@@ -34,4 +34,3 @@ properties:
   survey_type:
     type: string
     description: The type of the survey
-

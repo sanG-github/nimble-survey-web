@@ -37,42 +37,43 @@ properties:
       included:
         type: array
         items:
-          - type: object
-            description: The question object
-            properties:
-              id:
-                type: string
-                example: d3afbcf2b1d60af845dc
-              type:
-                type: string
-                example: question
-              attributes:
-                $ref: '../../schemas.yml#/question'
-              relationships:
-                type: object
-                properties:
-                  answers:
-                    type: object
-                    properties:
-                      data:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: string
-                              example: 3ffc938a273e45b27109
-                            type:
-                              type: string
-                              example: answer
-          - type: object
-            description: The answer object
-            properties:
-              id:
-                type: string
-                example: 3ffc938a273e45b27109
-              type:
-                type: string
-                example: answer
-              attributes:
-                $ref: '../../schemas.yml#/answer'
+          anyOf:
+            - type: object
+              description: The question object
+              properties:
+                id:
+                  type: string
+                  example: d3afbcf2b1d60af845dc
+                type:
+                  type: string
+                  example: question
+                attributes:
+                  $ref: '../../schemas.yml#/question'
+                relationships:
+                  type: object
+                  properties:
+                    answers:
+                      type: object
+                      properties:
+                        data:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: 3ffc938a273e45b27109
+                              type:
+                                type: string
+                                example: answer
+            - type: object
+              description: The answer object
+              properties:
+                id:
+                  type: string
+                  example: 3ffc938a273e45b27109
+                type:
+                  type: string
+                  example: answer
+                attributes:
+                  $ref: '../../schemas.yml#/answer'
