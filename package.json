@@ -29,6 +29,7 @@
     "@stoplight/spectral-cli": "6.8.0",
     "core-js": "3",
     "esbuild": "0.17.15",
+    "eslint-plugin-yml": "1.8.0",
     "i18n-js": "3.7.1",
     "postcss": "8.4.21",
     "postcss-cli": "10.1.0",
@@ -38,8 +39,5 @@
     "stylelint": "15.4.0",
     "tailwindcss": "1.6.0"
   },
-  "version": "0.1.0",
-  "devDependencies": {
-    "eslint-plugin-yml": "1.8.0"
-  }
+  "version": "0.1.0"
 }
