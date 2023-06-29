@@ -11,7 +11,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../../schemas.yml#/requests_oauth_post_revoke'
+          $ref: '../../schemas.yml#/requests_oauth_revoke'
 
   responses:
     '200':

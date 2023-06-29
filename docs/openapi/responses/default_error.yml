@@ -4,7 +4,7 @@ description: Default Error
 content:
   application/json:
     schema:
-      $ref: '../../schemas.yml#/error'
+      $ref: '../schemas.yml#/error'
     example:
       errors:
         - code: 'invalid_request'

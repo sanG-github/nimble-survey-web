@@ -26,16 +26,16 @@ components:
 
 paths:
   /registrations:
-    $ref: "paths/registrations/post_create.yml"
+    $ref: "paths/registrations.yml"
 
   /oauth/token:
-    $ref: "paths/oauth/post_token.yml"
+    $ref: "paths/oauth/token.yml"
 
   /oauth/revoke:
-    $ref: "paths/oauth/post_revoke.yml"
+    $ref: "paths/oauth/revoke.yml"
 
   /surveys:
-    $ref: "paths/surveys/get_survey_list.yml"
+    $ref: "paths/surveys.yml"
 
 tags:
   - name: Authentication
