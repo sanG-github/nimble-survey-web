@@ -2,7 +2,7 @@
 type: object
 
 description: |-
-  A response body for a new OAuth 2.0 token
+  A response body for a survey list
 
 properties:
   data:

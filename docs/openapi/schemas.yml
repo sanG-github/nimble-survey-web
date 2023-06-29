@@ -21,6 +21,9 @@ responses_oauth_token:
 responses_surveys:
   $ref: "schemas/responses/surveys.yml"
 
+responses_surveys_id:
+  $ref: "schemas/responses/surveys_id.yml"
+
 #### REUSABLE SCHEMAS ####
 
 error:
@@ -31,3 +34,9 @@ token:
 
 survey:
   $ref: "schemas/shared/survey.yml"
+
+question:
+  $ref: "schemas/shared/question.yml"
+
+answer:
+  $ref: "schemas/shared/answer.yml"

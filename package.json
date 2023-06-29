@@ -7,8 +7,10 @@
     "stylelint": "stylelint **/*.scss --color",
     "stylelint:fix": "stylelint **/*.scss --color --fix",
     "lint": "yarn eslint && yarn stylelint",
-    "lint:docs:dev": "yamllint 'docs/**/*.yml' && spectral lint docs/openapi/openapi.yml -F error",
-    "lint:docs:public": "yamllint public/openapi.yml && spectral lint public/openapi.yml -F error",
+    "lint:docs:yml": "eslint docs/openapi --ext .yml --color",
+    "lint:docs:openapi": "spectral lint docs/openapi/openapi.yml -F error",
+    "lint:docs:dev": "yarn lint:docs:yml && yarn lint:docs:openapi",
+    "lint:docs:public": "yarn build:docs && eslint public/openapi.yml --color --no-ignore && spectral lint public/openapi.yml -F error",
     "build:js": "node app/javascript/build.js",
     "build:sass": "sass app/assets/stylesheets/application.scss:app/assets/builds/application.css --no-source-map --load-path=node_modules --load-path=app/assets/stylesheets",
     "build:postcss": "postcss app/assets/builds/application.css --dir app/assets/builds",
@@ -27,6 +29,7 @@
     "@stoplight/spectral-cli": "6.8.0",
     "core-js": "3",
     "esbuild": "0.17.15",
+    "eslint-plugin-yml": "1.8.0",
     "i18n-js": "3.7.1",
     "postcss": "8.4.21",
     "postcss-cli": "10.1.0",
@@ -34,8 +37,7 @@
     "postcss-preset-env": "8.3.0",
     "sass": "1.61.0",
     "stylelint": "15.4.0",
-    "tailwindcss": "1.6.0",
-    "yaml-lint": "1.7.0"
+    "tailwindcss": "1.6.0"
   },
   "version": "0.1.0"
 }
