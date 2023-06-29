@@ -13,6 +13,9 @@ requests_oauth_revoke:
 requests_registrations:
   $ref: "schemas/requests/registrations.yml"
 
+requests_password:
+  $ref: "schemas/requests/password.yml"
+
 #### RESPONSES ####
 
 responses_oauth_token:

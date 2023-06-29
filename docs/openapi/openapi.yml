@@ -25,14 +25,17 @@ components:
     $ref: "responses.yml"
 
 paths:
-  /registrations:
-    $ref: "paths/registrations.yml"
-
   /oauth/token:
     $ref: "paths/oauth/token.yml"
 
   /oauth/revoke:
     $ref: "paths/oauth/revoke.yml"
+
+  /registrations:
+    $ref: "paths/registrations.yml"
+
+  /password:
+    $ref: "paths/password.yml"
 
   /surveys:
     $ref: "paths/surveys.yml"
@@ -43,5 +46,7 @@ paths:
 tags:
   - name: Authentication
     description: Authentication APIs
+  - name: Account
+    description: Account APIs
   - name: Surveys
     description: Survey APIs
