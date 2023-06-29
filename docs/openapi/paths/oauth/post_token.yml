@@ -3,20 +3,25 @@ post:
   tags:
     - Authentication
   security: []
-  summary: Login with email
+  summary: Login with Email or Refresh token
   description: |-
-    Request an Access Token using either a client-side obtained OAuth 2.0
-    authorization code or a server-side JWT assertion.
+    Request an Access Token using either email/password or a refresh token.
 
     You will then send this code to this endpoint to exchange it for
     an Access Token. The returned Access Token can then be used to to make
     Survey API calls.
   requestBody:
     required: true
+    description: |-
+      A request body for request a new OAuth 2.0 Token.
+
+      Depend on the grant_type (`password`, `refresh_token`) you will need to use different attributes.
     content:
       application/json:
         schema:
-          $ref: '../../schemas.yml#/requests_oauth_post_login_email'
+          oneOf:
+            - $ref: '../../schemas.yml#/requests_oauth_post_login_email'
+            - $ref: '../../schemas.yml#/requests_oauth_post_refresh_token'
 
   responses:
     '200':
@@ -24,7 +29,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../schemas.yml#/responses_oauth_post_login_email'
+            $ref: '../../schemas.yml#/responses_oauth_post_token'
 
     default:
       description: Error

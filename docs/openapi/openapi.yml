@@ -27,7 +27,7 @@ paths:
     $ref: "paths/registrations/post_create.yml"
 
   /oauth/token:
-    $ref: "paths/oauth/post_login_email.yml"
+    $ref: "paths/oauth/post_token.yml"
 
   /surveys:
     $ref: "paths/surveys/get_survey_list.yml"
