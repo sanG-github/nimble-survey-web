@@ -16,6 +16,9 @@ requests_registrations:
 requests_password:
   $ref: "schemas/requests/password.yml"
 
+requests_responses:
+  $ref: "schemas/requests/responses.yml"
+
 #### RESPONSES ####
 
 responses_oauth_token:
