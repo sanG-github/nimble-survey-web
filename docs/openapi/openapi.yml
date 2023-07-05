@@ -1,0 +1,14 @@
+---
+openapi: 3.0.0
+info:
+  title: Nimble Survey API Documentation
+  description: This is the API documentation for Nimble Survey
+  version: 1.0.0
+
+servers:
+  - local: http://localhost:{port}/api/v1
+    description: Local server
+    variables:
+      port: 3000
+
+paths:
