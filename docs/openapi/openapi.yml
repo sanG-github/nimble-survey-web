@@ -6,9 +6,132 @@ info:
   version: 1.0.0
 
 servers:
-  - local: http://localhost:{port}/api/v1
+  - url: https://survey-api.nimblehq.co/api/v1
+    description: Production server
+  - url: https://survey-api-staging.nimblehq.co/api/v1
+    description: Staging server
+  - url: http://localhost:{port}/api/v1
     description: Local server
     variables:
       port: 3000
 
 paths:
+  /oauth/token:
+    post:
+      summary: Login with email
+      description: Request an Access Token using either email/password or a refresh token. </br> You will then send this code to this endpoint to exchange it for an Access Token. The returned Access Token can then be used to to make Survey API calls.
+      requestBody:
+        required: true
+        description: A request body for request a new OAuth 2.0 Token.
+        content:
+          application/json:
+            schema:
+              type: object
+
+              required:
+                - grant_type
+                - email
+                - password
+                - client_id
+                - client_secret
+
+              properties:
+                grant_type:
+                  type: string
+                  description: |-
+                    The type of request being made, either using a client-side obtained
+                    authorization code, a refresh token, a JWT assertion, client credentials
+                    grant or another access token for the purpose of downscoping a token. In this API, please use `password`
+                  example: password
+                email:
+                  type: string
+                  description: |-
+                    The email of the user requesting an access token.
+
+                    Used in combination with `password` as the `grant_type`.
+                  example: dev@nimblehq.co
+                password:
+                  type: string
+                  description: |-
+                    The password of the user requesting an access token.
+
+                    Used in combination with `password` as the `grant_type`.
+                  example: password123
+                client_id:
+                  type: string
+                  description: |-
+                    The Client ID of the application requesting an access token.
+
+                    Used in combination with `password` as the `grant_type`.
+                  example: 6GbE8dhoz519l2N_F99StqoOs6Tcmm1rXgda4q__rIw
+                client_secret:
+                  type: string
+                  description: |-
+                    The client secret of the application requesting an access token.
+
+                    Used in combination with `password` as the `grant_type`.
+                  example: _ayfIm7BeUAhx2W1OUqi20fwO3uNxfo1QstyKlFCgHw
+      responses:
+        '200':
+          description: A response body for a new OAuth 2.0 token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: |-
+                          The identifier of the access token
+                        example: 123
+                      type:
+                        type: string
+                        description: |-
+                          The type of the access token
+                        example: token
+                      attributes:
+                        type: object
+                        description: |-
+                          A request for a new OAuth 2.0 token
+                        properties:
+                          access_token:
+                            type: string
+                            example: 123-f2i0CG6MDsf-wJE9FyYrhSGAOtxBkhYWDI
+                          token_type:
+                            type: string
+                            example: Bearer
+                          expires_in:
+                            type: number
+                            example: 7200
+                          refresh_token:
+                            type: string
+                            example: l27GNT0kmkPbnEaUxniXyu4cHfPyWFr00kZTX5oWKA6c
+                          created_at:
+                            type: number
+                            example: 1681974651
+
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        source:
+                          type: string
+                          example: Doorkeeper::OAuth::Error
+                        detail:
+                          type: string
+                          example: The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.
+                        code:
+                          type: string
+                          example: invalid_grant
+
