@@ -1,0 +1,15 @@
+type: object
+properties:
+  data:
+    type: object
+    properties:
+      id:
+        type: string
+        description: |-
+          The identifier of the access token
+      type:
+        type: string
+        description: |-
+          The type of the access token
+      attributes:
+        $ref: '../token.yml'

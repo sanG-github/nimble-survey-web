@@ -1,0 +1,14 @@
+type: object
+description: |-
+  A request for a new OAuth 2.0 token
+properties:
+  access_token:
+    type: string
+  token_type:
+    type: string
+  expires_in:
+    type: number
+  refresh_token:
+    type: string
+  created_at:
+    type: number

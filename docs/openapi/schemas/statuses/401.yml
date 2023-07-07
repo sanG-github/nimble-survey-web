@@ -1,0 +1,17 @@
+description: Unauthorized
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+                example: The access token is invalid
+              code:
+                type: string
+                example: invalid_token

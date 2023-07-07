@@ -1,0 +1,24 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '../survey.yml'
+  meta:
+    type: object
+    properties:
+      page:
+        type: integer
+      pages:
+        type: integer
+      page_size:
+        type: integer
+      records:
+        type: integer
