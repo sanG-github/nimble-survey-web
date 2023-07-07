@@ -10,10 +10,8 @@ servers:
     description: Production server
   - url: https://survey-api-staging.nimblehq.co/api/v1
     description: Staging server
-  - url: http://localhost:{port}/api/v1
+  - url: http://localhost:3000/api/v1
     description: Local server
-    variables:
-      port: 3000
 
 paths:
   /oauth/token:
@@ -135,3 +133,111 @@ paths:
                           type: string
                           example: invalid_grant
 
+  /surveys:
+    get:
+      summary: Survey list
+      description: Call this API to get the data of a list of survey
+      parameters:
+        - in: query
+          name: page[number]
+          schema:
+            type: integer
+            default: 1
+            description: The page number of the survey list.
+            example: 1
+        - in: query
+          name: page[size]
+          schema:
+            type: integer
+            default: 5
+            description: The page size of the survey list that client side expects to get.
+            example: 10
+
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: The access token is invalid
+                        code:
+                          type: string
+                          example: invalid_token
+        '200':
+          description: A response body for a survey list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                            description:
+                              type: string
+                            thank_email_above_threshold:
+                              type: string
+                            thank_email_below_threshold:
+                              type: string
+                            is_active:
+                              type: boolean
+                            cover_image_url:
+                              type: string
+                            created_at:
+                              type: string
+                              format: date-time
+                            active_at:
+                              type: string
+                              format: date-time
+                            inactive_at:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            survey_type:
+                              type: string
+                  meta:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      pages:
+                        type: integer
+                      page_size:
+                        type: integer
+                      records:
+                        type: integer
+              examples:
+                $ref: './examples/responses/surveys.json'
+
+security:
+  - basicAuth: []
+  - bearerAuth: []
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    bearerAuth:
+      type: http
+      scheme: bearer
