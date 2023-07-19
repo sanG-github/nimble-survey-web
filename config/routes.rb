@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
 
     namespace :docs do
-      get '/openapi', to: 'openapi#show'
+      get '/openapi', to: redirect('/redoc.html')
     end
   end
 end
