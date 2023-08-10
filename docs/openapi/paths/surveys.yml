@@ -1,0 +1,32 @@
+get:
+  summary: Survey list
+  description: Call this API to get the data of a list of survey
+  parameters:
+    - in: query
+      name: page[number]
+      schema:
+        type: integer
+        default: 1
+        description: The page number of the survey list.
+        example: 1
+    - in: query
+      name: page[size]
+      schema:
+        type: integer
+        default: 5
+        description: The page size of the survey list that client side expects to get.
+        example: 10
+
+  responses:
+    '200':
+      description: A response body for a survey list
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/responses/surveys.yml'
+          examples:
+            $ref: '../examples/responses/surveys.json'
+    '400':
+      $ref: '../schemas/statuses/400.yml'
+    '401':
+      $ref: '../schemas/statuses/401.yml'

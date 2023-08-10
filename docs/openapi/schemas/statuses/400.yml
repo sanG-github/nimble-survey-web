@@ -1,0 +1,20 @@
+description: Bad request
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              source:
+                type: string
+                example: Doorkeeper::OAuth::Error
+              detail:
+                type: string
+                example: The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.
+              code:
+                type: string
+                example: invalid_grant

@@ -1,0 +1,279 @@
+openapi: 3.0.0
+info:
+  title: Nimble Survey API Documentation
+  description: This is the API documentation for Nimble Survey
+  version: 1.0.0
+servers:
+  - url: 'https://survey-api.nimblehq.co/api/v1'
+    description: Production server
+  - url: 'https://survey-api-staging.nimblehq.co/api/v1'
+    description: Staging server
+  - url: 'http://localhost:3000/api/v1'
+    description: Local server
+paths:
+  /oauth/token:
+    post:
+      summary: Login with email
+      description: Request an Access Token using either email/password or a refresh token. </br> You will then send this code to this endpoint to exchange it for an Access Token. The returned Access Token can then be used to to make Survey API calls.
+      requestBody:
+        required: true
+        description: A request body for request a new OAuth 2.0 Token.
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - email
+                - password
+                - client_id
+                - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  description: |-
+                    The type of request being made, either using a client-side obtained
+                    authorization code, a refresh token, a JWT assertion, client credentials
+                    grant or another access token for the purpose of downscoping a token. In this API, please use `password`
+                email:
+                  type: string
+                  description: |-
+                    The email of the user requesting an access token.
+
+                    Used in combination with `password` as the `grant_type`.
+                password:
+                  type: string
+                  description: |-
+                    The password of the user requesting an access token.
+
+                    Used in combination with `password` as the `grant_type`.
+                client_id:
+                  type: string
+                  description: |-
+                    The Client ID of the application requesting an access token.
+
+                    Used in combination with `password` as the `grant_type`.
+                client_secret:
+                  type: string
+                  description: |-
+                    The client secret of the application requesting an access token.
+
+                    Used in combination with `password` as the `grant_type`.
+            example:
+              grant_type: password
+              email: dev@nimblehq.co
+              password: password123
+              client_id: 6GbE8dhoz519l2N_F99StqoOs6Tcmm1rXgda4q__rIw
+              client_secret: _ayfIm7BeUAhx2W1OUqi20fwO3uNxfo1QstyKlFCgHw
+      responses:
+        '200':
+          description: A response body for a new OAuth 2.0 token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The identifier of the access token
+                      type:
+                        type: string
+                        description: The type of the access token
+                      attributes:
+                        type: object
+                        description: A request for a new OAuth 2.0 token
+                        properties:
+                          access_token:
+                            type: string
+                          token_type:
+                            type: string
+                          expires_in:
+                            type: number
+                          refresh_token:
+                            type: string
+                          created_at:
+                            type: number
+              example:
+                data:
+                  id: '123'
+                  type: token
+                  attributes:
+                    access_token: 123-f2i0CG6MDsf-wJE9FyYrhSGAOtxBkhYWDI
+                    token_type: Bearer
+                    expires_in: 7200
+                    refresh_token: l27GNT0kmkPbnEaUxniXyu4cHfPyWFr00kZTX5oWKA6c
+                    created_at: 1681974651
+        '400':
+          $ref: '#/paths/~1surveys/get/responses/400'
+        '401':
+          $ref: '#/paths/~1surveys/get/responses/401'
+  /surveys:
+    get:
+      summary: Survey list
+      description: Call this API to get the data of a list of survey
+      parameters:
+        - in: query
+          name: 'page[number]'
+          schema:
+            type: integer
+            default: 1
+            description: The page number of the survey list.
+            example: 1
+        - in: query
+          name: 'page[size]'
+          schema:
+            type: integer
+            default: 5
+            description: The page size of the survey list that client side expects to get.
+            example: 10
+      responses:
+        '200':
+          description: A response body for a survey list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                            description:
+                              type: string
+                            thank_email_above_threshold:
+                              type: string
+                            thank_email_below_threshold:
+                              type: string
+                            is_active:
+                              type: boolean
+                            cover_image_url:
+                              type: string
+                            created_at:
+                              type: string
+                              format: date-time
+                            active_at:
+                              type: string
+                              format: date-time
+                            inactive_at:
+                              type: string
+                              format: date-time
+                              nullable: true
+                            survey_type:
+                              type: string
+                  meta:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      pages:
+                        type: integer
+                      page_size:
+                        type: integer
+                      records:
+                        type: integer
+              examples:
+                bangkok:
+                  value:
+                    data:
+                      - id: d5de6a8f8f5f1cfe51bc
+                        type: survey_simple
+                        attributes:
+                          title: Scarlett Bangkok
+                          description: We'd love ot hear from you!
+                          thank_email_above_threshold: '<span style="font-family:arial,helvetica,sans-serif"><span style="font-size:14px">Dear {name},<br /><br />Thank you for visiting Scarlett Wine Bar &amp; Restaurant at Pullman Bangkok Hotel G &nbsp;and for taking the time to complete our guest feedback survey!<br /><br />Your feedback is very important to us and each survey is read individually by the management and owners shortly after it is sent. We discuss comments and suggestions at our daily meetings and use them to constantly improve our services.<br /><br />We would very much appreciate it if you could take a few more moments and review us on TripAdvisor regarding your recent visit. By <a href="https://www.tripadvisor.com/Restaurant_Review-g293916-d2629404-Reviews-Scarlett_Wine_Bar_Restaurant-Bangkok.html">clicking here</a> you will be directed to our page.&nbsp;<br /><br />Thank you once again and we look forward to seeing you soon!<br /><br />The Team at Scarlett Wine Bar &amp; Restaurant&nbsp;</span></span><span style="font-family:arial,helvetica,sans-serif; font-size:14px">Pullman Bangkok Hotel G</span>'
+                          thank_email_below_threshold: '<span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">Dear {name},<br /><br />Thank you for visiting&nbsp;</span></span><span style="font-family:arial,helvetica,sans-serif; font-size:14px">Uno Mas at Centara Central World&nbsp;</span><span style="font-size:14px"><span style="font-family:arial,helvetica,sans-serif">&nbsp;and for taking the time to complete our customer&nbsp;feedback survey.</span></span><br /><br /><span style="font-family:arial,helvetica,sans-serif; font-size:14px">The Team at&nbsp;</span><span style="font-family:arial,helvetica,sans-serif"><span style="font-size:14px">Scarlett Wine Bar &amp; Restaurant&nbsp;</span></span><span style="font-family:arial,helvetica,sans-serif; font-size:14px">Pullman Bangkok Hotel G</span>'
+                          is_active: true
+                          cover_image_url: 'https://dhdbhh0jsld0o.cloudfront.net/m/1ea51560991bcb7d00d0_'
+                          created_at: '2017-01-23T07:48:12.991Z'
+                          active_at: '2015-10-08T07:04:00.000Z'
+                          inactive_at: null
+                          survey_type: Restaurant
+                    meta:
+                      page: 1
+                      pages: 20
+                      page_size: 1
+                      records: 20
+                riverside:
+                  value:
+                    data:
+                      - id: ed1d4f0ff19a56073a14
+                        type: survey_simple
+                        attributes:
+                          title: ibis Bangkok Riverside
+                          description: We'd love to hear from you!
+                          thank_email_above_threshold: 'Dear {name},<br /><br />Thank you for visiting Beach Republic and for taking the time to complete our brief survey. We are thrilled that you enjoyed your time with us! If you have a moment, we would be greatly appreciate it if you could leave a short review on <a href="http://www.tripadvisor.com/Hotel_Review-g1188000-d624070-Reviews-Beach_Republic_The_Residences-Lamai_Beach_Maret_Ko_Samui_Surat_Thani_Province.html">TripAdvisor</a>. It helps to spread the word and let others know about the Beach Republic Revolution!<br /><br />Thank you again and we look forward to welcoming you back soon.<br /><br />Sincerely,<br /><br />Beach Republic Team'
+                          thank_email_below_threshold: 'Dear {name},<br /><br />Thank you for visiting Beach Republic and for taking the time to complete our brief survey. We are constantly striving to improve and your feedback allows us to help improve the experience for you on your next visit. Each survey is read individually by senior staff and discussed with the team in daily meetings.&nbsp;<br /><br />Thank you again and we look forward to welcoming you back soon.<br /><br />Sincerely,<br /><br />Beach Republic Team'
+                          is_active: true
+                          cover_image_url: 'https://dhdbhh0jsld0o.cloudfront.net/m/287db81c5e4242412cc0_'
+                          created_at: '2017-01-23T03:32:24.585Z'
+                          active_at: '2016-01-22T04:12:00.000Z'
+                          inactive_at: null
+                          survey_type: Hotel
+                    meta:
+                      page: 2
+                      pages: 20
+                      page_size: 1
+                      records: 20
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        source:
+                          type: string
+                          example: 'Doorkeeper::OAuth::Error'
+                        detail:
+                          type: string
+                          example: 'The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.'
+                        code:
+                          type: string
+                          example: invalid_grant
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        detail:
+                          type: string
+                          example: The access token is invalid
+                        code:
+                          type: string
+                          example: invalid_token
+security:
+  - basicAuth: []
+  - bearerAuth: []
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    bearerAuth:
+      type: http
+      scheme: bearer

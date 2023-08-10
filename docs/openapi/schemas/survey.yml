@@ -1,0 +1,26 @@
+type: object
+properties:
+  title:
+    type: string
+  description:
+    type: string
+  thank_email_above_threshold:
+    type: string
+  thank_email_below_threshold:
+    type: string
+  is_active:
+    type: boolean
+  cover_image_url:
+    type: string
+  created_at:
+    type: string
+    format: date-time
+  active_at:
+    type: string
+    format: date-time
+  inactive_at:
+    type: string
+    format: date-time
+    nullable: true
+  survey_type:
+    type: string
